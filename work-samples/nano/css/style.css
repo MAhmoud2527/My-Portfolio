@@ -1,0 +1,23 @@
+ul li,ul span{display: inline-block;list-style: none; color:#fff;}
+ul li:after{content: "|";margin: 10px;}
+ul li:last-child:after{content: none;}
+.b{margin-left: -37px;}
+.d{margin-right: -30px}
+.c{float:right;width: 60%}
+input{border-radius: 17px;border:1px solid gray;height: 38px;width: 80%}
+header{background-color: #194168;padding: 5px;height: 30px;line-height: 20px}
+.bo{border: 1px solid #e3e3e3}
+.center{padding-left:40%}
+.hov{font-size: 20px;}
+.price{color:#194168;font-size: 30px}
+.hov li a:hover{text-decoration: none;border-bottom: 2px solid black;}
+.fright{float: right;}
+.fleft{float: left;}
+.inline{display: inline-block;}
+.up{padding-bottom: 40px }
+.bord{border: 3px solid #194168;text-align: center;}
+.icon{margin-left: -344px;}
+.top{margin-bottom: 30px;}
+.ttop{margin-bottom: -110px;display: inline-block;}
+.bg{background-color: red);}
+.thumbnail:hover{box-shadow: 3px 3px 50px gray;border-radius: 20px}

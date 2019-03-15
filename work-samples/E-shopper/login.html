@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>E-Commerce</title>
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link rel="stylesheet" type="text/css" href="css/animate.css">
+  <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+  <script src="js/jquery-1.12.3.min.js"></script> 
+  <script src="js/plugins.js"></script> 
+  <script src="js/wow.min.js"></script>
+  <script>
+    new WOW().init();
+  </script>
+</head>
+<body>
+      <header>
+        
+      <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#ournavebar" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="ournavebar">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="index.html">Home<span class="sr-only">(current)</span></a></li>
+           
+            <li class="dropdown" id="m1">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" >Shop <span class="caret"></span></a>
+              <ul class="dropdown-menu" id="m11">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li><a href="#">Separated link</a></li>
+                <li><a href="#">One more separated link</a></li>
+              </ul>
+            </li>
+           
+           <li class="dropdown" id="m2">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Blog<span class="caret"></span></a>
+              <ul class="dropdown-menu" id="m22">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+              </ul>
+            </li>
+            <li><a href="#">404</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+
+        
+          <ul class="nav navbar-nav navbar-right">
+             <form class="navbar-form navbar-left" role="search">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Search">
+            </div>
+            <button type="button" class="btn btn-default">Search</button>
+          </form>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
+    </div>
+      <!--header-middle-->
+      <div class="header-middle">
+          <div class="container">
+            <div class="row">
+              <div class=" col-sm-4">
+                <div class="logo pull-left">
+                  <a href="index.html"><img src="img/logo.png" alt="Logo"></a>
+                </div>
+                <div class="btn-group pull-right">
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
+                      USA
+                      <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                      <li><a href="#">Canada</a></li>
+                      <li><a href="#">UK</a></li>
+                    </ul>
+                  </div>
+                  
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
+                      DOLLAR
+                      <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                      <li><a href="#">Canadian Dollar</a></li>
+                      <li><a href="#">Pound</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-8">
+                <div class="shop-menu pull-right">
+                  <ul>
+                    <li><a href="#"><i class="fa fa-user"></i> Account</a></li>
+                    <li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>
+                    <li><a href="#"><i class="fa fa-crosshairs"></i> Checkout</a></li>
+                    <li><a href="#"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+                    <li><a href="#"><i class="fa fa-lock"></i> Login</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+       <div class="container"><hr /></div> 
+    <!--header-bottom-->
+        </header><br />
+
+
+
+
+
+
+<!--LOGIN-->  
+      <div class="loginbg" id="log">
+        <div class="op">
+          <div class="container">
+            <div class="login" id="log">
+              <div class="row">
+                <div class="col-sm-5">
+                  <h3>Login To Your account</h3>
+                  <form class="wow bounceInLeft" data-wow-offset="400">
+                    <input class="in1" type="text" placeholder="Email Address" id="username"><br>
+                    <input class="in1" type="password" placeholder="Password" id="password"><br>
+                    <input class="in2" type="checkbox">Keep Me loggedIn</input><br>
+                    <input class="log" type="button" value="Login" id="logbtn">
+                  </form>
+                </div>
+                <div class="col-sm-2 hidden-xs wow bounceInDown" data-wow-offset="450">
+                  <h4>OR</h4>
+                </div>
+                <div class="col-sm-5">
+                  <h3>New User Signup!</h3>
+                  <form class="wow bounceInRight" data-wow-offset="400">
+                    <input class="in1" type="text" placeholder="example@gmail.com" id="signemail"><br>
+                    <input class="in1" type="text" placeholder="Your Name" id="signusername"><br>
+                    <input class="in1" type="password" placeholder="Password" id="signpassword"><br>
+                    <input class="log" type="button" value="SignUp" id="singupbtn">
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+<!--LOGIN-->
+
+
+
+
+
+
+
+<!--Footer-->
+      <section class="footer">
+            <div class="container">  
+               <!--Top Fotter-->
+             <div class="footer-top">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-2">
+            <div class="companyinfo">
+              <h2><span>E</span>-shopper</h2>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,sed do eiusmod tempor</p>
+            </div>
+          </div>
+          <div class="col-sm-7">
+            <div class="col-sm-3">
+              <div class="video-gallery text-center">
+                <a href="#">
+                  <div class="iframe-img">
+                    <img src="img/iframe1.png" alt="">
+                  </div>
+                  <div class="overlay-icon">
+                    <i class="fa fa-play-circle-o"></i>
+                  </div>
+                </a>
+                <p>Circle of Hands</p>
+                <h2>24 DEC 2014</h2>
+              </div>
+            </div>
+            
+            <div class="col-sm-3">
+              <div class="video-gallery text-center">
+                <a href="#">
+                  <div class="iframe-img">
+                    <img src="img/iframe2.png" alt="">
+                  </div>
+                  <div class="overlay-icon">
+                    <i class="fa fa-play-circle-o"></i>
+                  </div>
+                </a>
+                <p>Circle of Hands</p>
+                <h2>24 DEC 2014</h2>
+              </div>
+            </div>
+            
+            <div class="col-sm-3">
+              <div class="video-gallery text-center">
+                <a href="#">
+                  <div class="iframe-img">
+                    <img src="img/iframe3.png" alt="">
+                  </div>
+                  <div class="overlay-icon">
+                    <i class="fa fa-play-circle-o"></i>
+                  </div>
+                </a>
+                <p>Circle of Hands</p>
+                <h2>24 DEC 2014</h2>
+              </div>
+            </div>
+            
+            <div class="col-sm-3">
+              <div class="video-gallery text-center">
+                <a href="#">
+                  <div class="iframe-img">
+                    <img src="img/iframe4.png" alt="">
+                  </div>
+                  <div class="overlay-icon">
+                    <i class="fa fa-play-circle-o"></i>
+                  </div>
+                </a>
+                <p>Circle of Hands</p>
+                <h2>24 DEC 2014</h2>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-3">
+            <div class="address">
+              <img src="img/map.png" alt="">
+              <p>505 S Atlantic Ave Virginia Beach, VA(Virginia)</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<!--Top Fotter-->
+              <div class="foot2">
+                <div class="row">
+                  <div class="col-md-8 col-sm-6">
+                    <div class="col-md-3 col-sm-6">
+                      <h4>Services</h4>
+                      <ul class="list-unstyled">
+                        <li><a href="#">ONlLINE HELP</a></li>
+                        <li><a href="#">CONTACT US</a></li>
+                        <li><a href="#">ORDER STATUE</a></li>
+                        <li><a href="#">Change Location</a></li>
+                        <li><a href="#">FAQs</a></li>
+                      </ul>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                      <h4>QUOCK SHOP</h4>
+                      <ul class="list-unstyled">
+                        <li><a href="#">T-Shirt</a></li>
+                        <li><a href="#">Mens</a></li>
+                        <li><a href="#">Womens</a></li>
+                        <li><a href="#">Gift Cards</a></li>
+                        <li><a href="#">Shoes</a></li>
+                      </ul>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                      <h4>POLICIES</h4>
+                      <ul class="list-unstyled">
+                        <li><a href="#">Terms of Use</a></li>
+                        <li><a href="#">Privecy Policy</a></li>
+                        <li><a href="#">Refund Policy</a></li>
+                        <li><a href="#">Billing System</a></li>
+                        <li><a href="#">Ticket System</a></li>
+                      </ul>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                      <h4>ABOUT SHOPPER</h4>
+                      <ul class="list-unstyled">
+                        <li><a href="#">Company Information</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Store Location</a></li>
+                        <li><a href="#">Affillate Program</a></li>
+                        <li><a href="#">Copyright</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="col-md-4 col-sm-6">
+                    <div> 
+                      <h4>Contact With Us</h4>
+                      <form>
+                        <input type="text" placeholder="Your Email adress">
+                        <a href="#" class="text-center"><i class="fa fa-arrow-circle-o-right fa-2x"></i></a>
+                      </form>
+                      <p>Get the most recent updates from <br>our site and be updated your self...</p>
+                    </div>  
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="copyright">
+               <div class="container text-center">
+                 CopyRight&copy;2016 <i class="fa fa-heart"> Amr Mohamed & Mahmoud Ahmed </i> 
+               </div>
+            </div>
+      </section>
+
+<!--SOCIAL MEDIA-->
+
+           
+<!--SCROLLTOP-->
+            <div id="scroll-top">
+              <i class="fa fa-chevron-circle-up fa-3x"></i>
+            </div>
+<!--SCROLLTOP-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery-1.12.3.min.js"></script>  
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+<!--SOCIAL MEDIA-->
+</body>
+</html>
