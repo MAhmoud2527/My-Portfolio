@@ -431,8 +431,8 @@
         background: #ffffff;
         width: 64px;
         position: absolute;
-        top: 20%;
-        right: -67px;
+        top: 10%;
+        right: -60px;
         height: 64px;
         border-radius: 50%;
         text-align: center;
@@ -446,10 +446,11 @@
     
     #testimonial .commant img {
         height: 269px;
+        border-radius: 10%;
     }
     
     #testimonial .commant .info {
-        padding: 85px 60px 0px 60px;
+        padding: 28px 60px 0px 60px;
     }
     
     #testimonial .commant .info p {
@@ -552,9 +553,10 @@
     }
     
     #skills .count-info h4 {
-        font-size: 22px;
+        font-size: 26px;
         color: #82BC00;
         text-transform: uppercase;
+        padding-top: 11px;
     }
     /* Skills Section End */
     /* Blog Section Start */
@@ -801,6 +803,7 @@
     #footer p {
         font-size: 18px;
         font-weight: 400;
+        text-align: center;
     }
     
     #footer a {
@@ -947,7 +950,7 @@
     
     .box img {
         transition: 1s all ease;
-        /* min-height: -webkit-fill-available; */
+        min-height: -webkit-fill-available;
     }
     
     .box img:hover {
@@ -966,6 +969,8 @@
     .box .controllers h2 {
         margin: 0;
         color: #fff;
+        font-size: 25px;
+        padding-top: 20px;
     }
     
     .box a.btn-primary {
@@ -990,7 +995,7 @@
     }
     
     .col-md-6 .box {
-        height: 640px;
+        height: 400px;
         overflow: hidden;
     }
     
