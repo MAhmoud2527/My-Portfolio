@@ -82,7 +82,7 @@ $(document).ready(function() {
 
     // Portfolio
     $('.box').hover(function() {
-        var height = $(this).height() / 2;
+        var height = $(this).height() / 3;
         // $(this).find('img').css('marginTop', '-'+height+'px');
         $(this).find('.controllers').css('paddingTop', height + 'px').slideToggle(500);
     });
