@@ -6,7 +6,7 @@ window.PORTFOLIO_CERTIFICATIONS = [
     issuer: "Project Management Institute (PMI)",
     year: "2025",
     logo: "assets/img/cert-logos/pmi.png",
-    image: "assets/img/certificates/1.JPG"
+    image: "assets/img/certificates/1.jpg"
   },
   {
     id: "ccna",
@@ -14,7 +14,7 @@ window.PORTFOLIO_CERTIFICATIONS = [
     fullTitle: "Cisco Certified Network Associate",
     issuer: "Cisco",
     year: "2024",
-    logo: "assets/img/cert-logos/cisco.JPG",
+    logo: "assets/img/cert-logos/cisco.jpg",
     image: "assets/img/certificates/2.jpg"
   },
   {
