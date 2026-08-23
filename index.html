@@ -1,440 +1,336 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Mahmoud Ahmed</title>
-    <link rel="shortcut icon" type="image/png" href="assets/img/favicon.png">
-    <!-- Bootstrap -->
-    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/jasny-bootstrap.min.css">
-    <!-- Main Style -->
-    <link rel="stylesheet" type="text/css" href="assets/css/main.css">
-
-    <!-- Responsive Style -->
-    <link rel="stylesheet" type="text/css" href="assets/css/responsive.css">
-
-    <!--Fonts-->
-    <link rel="stylesheet" media="screen" href="assets/fonts/font-awesome/font-awesome.min.css">
-
-    <!-- Extras -->
-    <link rel="stylesheet" type="text/css" href="assets/extras/animate.css">
-    <link rel="stylesheet" type="text/css" href="assets/extras/lightbox.css">
-    <link rel="stylesheet" type="text/css" href="assets/extras/owl/owl.carousel.css">
-    <link rel="stylesheet" type="text/css" href="assets/extras/owl/owl.theme.css">
-    <link rel="stylesheet" type="text/css" href="assets/extras/owl/owl.transitions.css">
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-                <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-                <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-              <![endif]-->
-    <!-- owl carousel -->
-    <script src="assets/js/typed.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Portfolio of Mahmoud Ahmed, PMP-certified Project Manager specializing in ELV and ICT projects in Saudi Arabia.">
+  <meta name="keywords" content="Mahmoud Ahmed, Project Manager, PMP, ELV, ICT, CCTV, Structured Cabling, Wi-Fi, Fire Alarm, BMS, Saudi Arabia">
+  <meta name="author" content="Mahmoud Ahmed Mohamed">
+  <meta property="og:title" content="Mahmoud Ahmed | Project Manager - ELV & ICT">
+  <meta property="og:description" content="Selected ELV and ICT projects, professional certifications, and technical expertise.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/img/profile-mahmoud.jpg">
+  <meta name="theme-color" content="#111821">
+  <title>Mahmoud Ahmed | Project Manager - ELV & ICT</title>
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script defer src="assets/js/projects.js"></script>
+  <script defer src="assets/js/certifications.js"></script>
+  <script defer src="assets/js/app.js"></script>
 </head>
-
 <body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
 
-    <!-- Header Section Start -->
-    <div id="header">
-        <div class="container">
-            <div class="col-md-12 top-header">
-                <div class="logo-menu">
-                    <div class="logo pull-left wow fadeInDown animated" data-wow-delay=".2s">
-                        <a href="index.html"><img src="assets/img/logo.png" alt="logo"></a>
-                    </div>
-                    <div class="pull-right wow fadeInDown animated" data-wow-delay=".2">
-                        <div id="menu" data-toggle="offcanvas" data-target=".navmenu" data-canvas="body">
-                            <span>Menu</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="sidebar-nav">
-                    <!-- navigation start -->
-                    <div class="navmenu navmenu-default navmenu-fixed-right offcanvas" style="" id="navigation">
-                        <a href="index.html"><img class="logo" src="assets/img/logo.png" alt="logo"></a>
-                        <ul class="nav navmenu-nav">
-                            <li class="active"><a href="#header">Home</a></li>
-                            <li><a href="#works">Certificates</a></li>
-                            <li><a href="#testimonial">About Me</a></li>
-                            <li><a href="#skills">Skills</a></li>
-                            <li><a href="#feedback">Contact Me</a></li>
-                        </ul>
-                    </div>
-                    <!-- navigation End -->
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="banner text-center">
-                        <h1 class="wow animated" data-wow-delay=".8s"><span class="ityped"></span></h1>
-                        <script type="text/javascript">
-                            window.ityped.init(document.querySelector('.ityped'), {
-                                strings: ["Hello, I'M Mahmoud Ahmed"],
-                                loop: true
-                            })
-                        </script>
-                        <h2 class="wow fadeInDown animated" data-wow-delay="3s">Project Manager | PMP® | ELV & ICT</h2>
-                        <!-- Download CV -->
-                        <a href="Mahmoud_Ahmed_CV.pdf" download="Mahmoud Ahmed  Project Manager – ELV & ICT  PMP®" class="btn btn-border lg wow fadeInLeft animated" data-wow-delay="3.1s"><i class="fa fa-download"></i>  Download CV</a>
-                        <div class="scroll">
-                            <a href="#works"><i id="arrow" class="fa fa-angle-down wow fadeInUp animated arrow" data-wow-delay="3.2s"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+  <header class="site-header" id="top">
+    <div class="container nav-wrap">
+      <a class="brand" href="#top" aria-label="Mahmoud Ahmed home">
+        <img src="assets/img/logo.svg" alt="MA logo" width="42" height="42">
+        <span>
+          <strong>Mahmoud Ahmed</strong>
+          <small>Project Manager</small>
+        </span>
+      </a>
+
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Open navigation">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav id="primary-nav" class="primary-nav" aria-label="Primary navigation">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#certifications">Certifications</a>
+        <a href="#expertise">Expertise</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <div class="nav-social" aria-label="Social links">
+        <a href="https://www.linkedin.com/in/mahmoudahmed2527" target="_blank" rel="noreferrer" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 8.3H3.1V21h3.4V8.3ZM4.8 3A2 2 0 1 0 4.8 7a2 2 0 0 0 0-4ZM21 13.7c0-3.8-2-5.6-4.7-5.6-2.2 0-3.1 1.2-3.7 2v-1.7H9.2V21h3.4v-6.2c0-1.6.3-3.2 2.3-3.2 2 0 2 1.8 2 3.3V21H21v-7.3Z"/></svg>
+        </a>
+        <a href="mailto:M.Ahmed1518@Outlook.com" aria-label="Email">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Zm9 7 8-5H4l8 5Zm0 2L4 9v8h16V9l-8 5Z"/></svg>
+        </a>
+        <a href="https://wa.me/966548306872" target="_blank" rel="noreferrer" aria-label="WhatsApp">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.5 0-3-.4-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.4-.7-1.7-.8-.2-.1-.4-.1-.6.2-.2.2-.6.8-.8 1-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-2-1.2 7.5 7.5 0 0 1-1.4-1.8c-.1-.2 0-.4.1-.5l.4-.5.2-.4c.1-.2 0-.4 0-.5l-.7-1.7c-.2-.4-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.2-.9.9-.9 2.2 0 1.3.9 2.5 1 2.7.1.2 1.9 3 4.7 4.1 2.8 1.1 2.8.8 3.3.7.5 0 1.4-.6 1.6-1.1.2-.6.2-1 .2-1.1-.1-.2-.3-.2-.6-.3Z"/></svg>
+        </a>
+      </div>
     </div>
-    <!-- Header Section End -->
+  </header>
 
-    <!-- Work Section Start -->
-    <section id="works">
-        <div class="container">
-            <div class="row">
-                <h1 class="section-title wow fadeInLeft animated" data-wow-delay=".6s">SOME OF  <br>My <br><span>Certificates</span></h1>
-                <div class="body-content">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="box">
-                                    <figure class="flip_new"></figure>
-                                    <div class="controllers">
-                                        <a href="images/Certificates/9.jpg" data-lightbox="img1"><i class="fa fa-search"></i></a>
-                                        <h2>Project Management Professional (PMP)®</h2>
-                                        <!-- <a href="work-Certificates/Bootstrap" target="_blank" class="btn btn-primary"> <i class="fa fa-plus"></i> View Website</a> -->
-                                    </div>
-                                    <img src="images/Certificates/9.jpg" alt="" class="img-responsive">
-                                </div>
-                                <div class="box">
-                                    <!-- <figure class="flip_new"></figure> -->
-                                    <div class="controllers">
-                                        <a href="images/Certificates/8.jpg" data-lightbox="img1"><i class="fa fa-search"></i></a>
-                                        <h2>RCNA-Routing & Switching</h2>
-                                        <!-- <a href="work-Certificates/Bootstrap" target="_blank" class="btn btn-primary"> <i class="fa fa-plus"></i> View Website</a> -->
-                                    </div>
-                                    <img src="images/Certificates/8.jpg" alt="" class="img-responsive">
-                                </div>
-                                <div class="box">
-                                    <!-- <figure class="flip_new"></figure> -->
-                                    <div class="controllers">
-                                        <a href="images/Certificates/15.png" data-lightbox="img1"><i class="fa fa-search"></i></a>
-                                        <h2>Structured Cabling System LCS3</h2>
-                                        <!-- <a href="work-Certificates/Bootstrap" target="_blank" class="btn btn-primary"> <i class="fa fa-plus"></i> View Website</a> -->
-                                    </div>
-                                    <img src="images/Certificates/15.png" alt="" class="img-responsive">
-                                </div>
-                                 <div class="box">
-                                    <!-- <figure class="flip_new"></figure> -->
-                                    <div class="controllers">
-                                        <a href="images/Certificates/5.jpg" data-lightbox="img1"><i class="fa fa-search"></i></a>
-                                        <h2>Project Management Professional (PMP) <br> Earn 35 PDUs</h2>
-                                        <!-- <a href="work-Certificates/Bootstrap" target="_blank" class="btn btn-primary"> <i class="fa fa-plus"></i> View Website</a> -->
-                                    </div>
-                                    <img src="images/Certificates/5.jpg" alt="" class="img-responsive">
-                                </div>
-                                <div class="box">
-                                    <div class="controllers">
-                                        <a href="images/Certificates/1.jpg" data-lightbox="img1"><i class="fa fa-search"></i></a>
-                                        <h2>Ruijie Specialist Engineer (for Reyee)</h2>
-                                        <!-- <a href="work-Certificates/E-Shopper" target="_blank" class="btn btn-primary"> <i class="fa fa-plus"></i> View Website</a> -->
-                                    </div>
-                                    <img src="images/Certificates/1.jpg" alt="" class="img-responsive">
-                                </div>
-                                <div class="box">
-                                    <div class="controllers">
-                                        <a href="images/Certificates/4.jpg" data-lightbox="img1"><i class="fa fa-search"></i></a>
-                                        <h2>Web Development using PHP, MySQL and Laravel</h2>
-                                        <!-- <a href="work-Certificates/Resume" target="_blank" class="btn btn-primary"> <i class="fa fa-plus"></i> View Website</a> -->
-                                    </div>
-                                    <img src="images/Certificates/4.jpg" alt="" class="img-responsive">
-                                </div>
-                                <div class="box">
-                                    <div class="controllers">
-                                        <a href="images/Certificates/6.jpg" data-lightbox="img1"><i class="fa fa-search"></i></a>
-                                        <h2>Communication Skills</h2>
-                                        <!-- <a href="https://mahmoud2527.github.io/Natours/" target="_blank" class="btn btn-primary"> <i class="fa fa-plus"></i> View Website</a> -->
-                                    </div>
-                                    <img src="images/Certificates/6.jpg" alt="" class="img-responsive">
-                                </div>
-                                <div class="box">
-                                    <div class="controllers">
-                                        <a href="images/Certificates/2.jpg" data-lightbox="img1"><i class="fa fa-search"></i></a>
-                                        <h2>Cisco Certified Network Associate Security (CCNA)</h2>
-                                        <!-- <a href="https://mahmoud2527.github.io/Natours/" target="_blank" class="btn btn-primary"> <i class="fa fa-plus"></i> View Website</a> -->
-                                    </div>
-                                    <img src="images/Certificates/2.jpg" alt="" class="img-responsive">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="box">
-                                    <!-- <figure class="flip_new"></figure> -->
-                                    <div class="controllers">
-                                        <a href="images/Certificates/14.png" data-lightbox="img1"><i class="fa fa-search"></i></a>
-                                        <h2>RCPS Product Sales 2026</h2>
-                                        <!-- <a href="work-Certificates/Bootstrap" target="_blank" class="btn btn-primary"> <i class="fa fa-plus"></i> View Website</a> -->
-                                    </div>
-                                    <img src="images/Certificates/14.png" alt="" class="img-responsive">
-                                </div>
-                                <div class="box">
-                                    <!-- <figure class="flip_new"></figure> -->
-                                    <div class="controllers">
-                                        <a href="images/Certificates/13.png" data-lightbox="img1"><i class="fa fa-search"></i></a>
-                                        <h2>ECA (EZVIZ Certified Associate)
-                                        </h2>
-                                        <!-- <a href="work-Certificates/Bootstrap" target="_blank" class="btn btn-primary"> <i class="fa fa-plus"></i> View Website</a> -->
-                                    </div>
-                                    <img src="images/Certificates/13.png" alt="" class="img-responsive">
-                                </div>
-                                <div class="box">
-                                    <!-- <figure class="flip_new"></figure> -->
-                                    <div class="controllers">
-                                        <a href="images/Certificates/12.jpg" data-lightbox="img1"><i class="fa fa-search"></i></a>
-                                        <h2>DHCA - ACS - Access Control System Certified Associate
-                                        </h2>
-                                        <!-- <a href="work-Certificates/Bootstrap" target="_blank" class="btn btn-primary"> <i class="fa fa-plus"></i> View Website</a> -->
-                                    </div>
-                                    <img src="images/Certificates/12.jpg" alt="" class="img-responsive">
-                                </div>
-                                <div class="box">
-                                    <!-- <figure class="flip_new"></figure> -->
-                                    <div class="controllers">
-                                        <a href="images/Certificates/11.jpeg" data-lightbox="img1"><i class="fa fa-search"></i></a>
-                                        <h2>DHCA - IPVSS - IP Video Surveillance System Certified Associate
-                                        </h2>
-                                        <!-- <a href="work-Certificates/Bootstrap" target="_blank" class="btn btn-primary"> <i class="fa fa-plus"></i> View Website</a> -->
-                                    </div>
-                                    <img src="images/Certificates/11.jpeg" alt="" class="img-responsive">
-                                </div>
-                                <div class="box">
-                                    <div class="controllers">
-                                        <a href="images/Certificates/10.jpg" data-lightbox="img1"><i class="fa fa-search"></i></a>
-                                        <h2>DHCA – DoLynk Cloud Management System Certified Associate</h2>
-                                        <!-- <a href="work-Certificates/Bootstrap" target="_blank" class="btn btn-primary"> <i class="fa fa-plus"></i> View Website</a> -->
-                                    </div>
-                                    <img src="images/Certificates/10.jpg" alt="" class="img-responsive">
-                                </div>
-                                <div class="box">
-                                    <div class="controllers">
-                                        <a href="images/Certificates/7.jpg" data-lightbox="img1"><i class="fa fa-search"></i></a>
-                                        <h2>Ruijie Specialist Engineer (SMB Product)</h2>
-                                        <!-- <a href="work-Certificates/Bootstrap" target="_blank" class="btn btn-primary"> <i class="fa fa-plus"></i> View Website</a> -->
-                                    </div>
-                                    <img src="images/Certificates/7.jpg" alt="" class="img-responsive">
-                                </div>
-                                <div class="box">
-                                    <div class="controllers">
-                                        <a href="images/Certificates/3.jpg" data-lightbox="img1"><i class="fa fa-search"></i></a>
-                                        <h2>Ruijie Specialist Engineer Reyee Solutions <br>(for CCTV)</h2>
-                                        <!-- <a href="work-Certificates/Bootstrap" target="_blank" class="btn btn-primary"> <i class="fa fa-plus"></i> View Website</a> -->
-                                    </div>
-                                    <img src="images/Certificates/3.jpg" alt="" class="img-responsive">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+  <!--  Start Main Section -->
+  <main id="main-content">
+    <!--  Start Main Content Section -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-grid-pattern" aria-hidden="true"></div>
+      <div class="container hero-layout">
+        <div class="hero-copy reveal">
+          <p class="eyebrow">PMP-Certified Project Manager</p>
+          <h1 id="hero-title">Hello, I am <span>Mahmoud Ahmed</span></h1>
+          <p class="hero-role">Project Manager | PMP&reg; | ELV &amp; ICT</p>
+          <p class="hero-intro">Delivering ELV and ICT projects with a focus on planning, coordination, technical quality, commissioning, and successful handover.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="assets/files/Mahmoud_Ahmed_CV.pdf" download="Mahmoud Ahmed  Project Manager – ELV & ICT  PMP®">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 3h2v9l3-3 1.4 1.4L12 15.8l-5.4-5.4L8 9l3 3V3ZM5 18h14v3H5v-3Z"/></svg>
+              Download CV
+            </a>
+            <a class="button button-ghost" href="#projects">View Projects</a>
+          </div>
         </div>
+
+        <div class="hero-visual reveal">
+          <div class="portrait-shell">
+            <img src="assets/img/profile-mahmoud.jpg" alt="Portrait of Mahmoud Ahmed" width="600" height="800">
+          </div>
+          <div class="contact-panel">
+            <a href="https://maps.google.com/?q=Makkah,Saudi+Arabia" target="_blank" rel="noreferrer">
+              <span class="panel-icon" aria-hidden="true">&#9679;</span>
+              <span>Makkah, Saudi Arabia</span>
+            </a>
+            <a href="mailto:M.Ahmed1518@Outlook.com">
+              <span class="panel-icon" aria-hidden="true">@</span>
+              <span>M.Ahmed1518@Outlook.com</span>
+            </a>
+            <a href="tel:+966548306872">
+              <span class="panel-icon" aria-hidden="true">&#9742;</span>
+              <span>+966 54 830 6872</span>
+            </a>
+            <a href="https://www.linkedin.com/in/mahmoudahmed2527" target="_blank" rel="noreferrer">
+              <span class="panel-icon" aria-hidden="true">in</span>
+              <span>linkedin.com/in/mahmoudahmed2527</span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <a class="scroll-cue" href="#about" aria-label="Scroll to About section">
+        <span></span>
+        Scroll down
+      </a>
     </section>
-    <!-- Work Section End  -->
+    <!--  End Main Content Section -->
 
-    <!-- Testimonial Section Start -->
-    <section id="testimonial">
-        <div class="container">
-            <div class="row">
-                <h1 class="section-title wow fadeInLeft animated" data-wow-delay=".6s">Let me <br>introduce <br><span> myself</span></h1>
-                <div id="testimonial-carousel" class="carousel slide wow fadeInUp animated" data-ride="carousel" data-wow-delay="1.2s">
-                    <div class="carousel-inner">
-                        <div class="item active">
-                            <blockquote>
-                                <div class="commant">
-                                    <div class="col-lg-3 col-md-3">
-                                        <div class="claint">
-                                            <img src="assets/img/testimonial/img1.jpg" alt="">
-                                        </div>
-                                        <span class="quote"><i class="fa fa-quote-left"></i></span>
-                                    </div>
-                                    <div class="col-lg-9 col-md-9">
-                                        <div class="info">
-                                            <p> I'm a Project Manager at Premium Security<br>
-                                                Specializing in the management and implementation of light current (ELV) systems :<br>
-                                                🔹 CCTV systems<br>
-                                                🔹 Fire alarm systems
-                                                🔹 Access control systems<br>
-                                                🔹 Data and communications networks<br>
-                                                🔹 PA systems
-                                                🔹 Central television (SMATV) systems
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </blockquote>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <!--  Start About Me Section -->
+    <section class="section section-light" id="about" aria-labelledby="about-title">
+      <div class="container about-layout">
+        <div class="section-copy reveal">
+          <p class="section-kicker">About Me</p>
+          <h2 id="about-title">Focused on delivering reliable ELV projects</h2>
+          <p>I am a PMP&reg;-certified Project Manager with progressive experience delivering ELV, low-current, and networking projects across hospitality, commercial, residential, and Hajj-related environments in Saudi Arabia.</p>
+          <p>My background combines project coordination, site execution, testing and commissioning, stakeholder communication, and hands-on technical knowledge of ICT and ELV systems.</p>
+          <a class="text-link" href="https://www.linkedin.com/in/mahmoudahmed2527" target="_blank" rel="noreferrer">View LinkedIn profile <span aria-hidden="true">&rarr;</span></a>
         </div>
+
+        <div class="metric-grid reveal" aria-label="Professional highlights">
+          <article class="metric-card">
+            <strong>3+</strong>
+            <span>Years in ELV Project Delivery</span>
+          </article>
+          <article class="metric-card">
+            <strong>11+</strong>
+            <span>Selected Projects</span>
+          </article>
+          <article class="metric-card">
+            <strong>10+</strong>
+            <span>ELV &amp; ICT Systems</span>
+          </article>
+          <article class="metric-card">
+            <strong>3</strong>
+            <span>Major Saudi Cities</span>
+          </article>
+        </div>
+
+        <div class="about-portrait reveal">
+          <img src="assets/img/profile-mahmoud.jpg" alt="Mahmoud Ahmed" width="600" height="800">
+          <div class="dot-field" aria-hidden="true"></div>
+        </div>
+      </div>
     </section>
-    <!-- Testimonial Section End -->
+    <!--  End About Me Section -->
 
-
-
-    <!-- Skills Section Start -->
-    <section id="skills">
-        <div class="container">
-            <div class="row">
-                <h1 class="section-title wow fadeInLeft animated" data-wow-delay=".6s">My<br>Passionate<br> <span>Skills</span></h1>
-                <div class="col-sm-6 col-md-3 wow fadeInUp animated" data-wow-delay="1.2s">
-                    <div class="fact-block">
-                        <div class="circle four">
-                            <div class="count-info">
-                                <h3><span class="counter">97%</span></h3>
-                                <h4>PMP<spsn style="font-size: 14px;position: absolute;margin: 0 3px;">®</spsn></h4>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-3 wow fadeInUp animated" data-wow-delay="1.2s">
-                    <div class="fact-block">
-                        <div class="circle four">
-                            <div class="count-info">
-                                <h3><span class="counter">95%</span></h3>
-                                <h4>CCNA</h4>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-3 wow fadeInUp animated" data-wow-delay="1.2s">
-                    <div class="fact-block">
-                        <div class="circle four">
-                            <div class="count-info">
-                                <h3><span class="counter">85%</span></h3>
-                                <h4>Ruijie</h4>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-3 wow fadeInUp animated" data-wow-delay="1.2s">
-                    <div class="fact-block">
-                        <div class="circle two">
-                            <div class="count-info">
-                                <h3><span class="counter">75%</span></h3>
-                                <h4>Huawei</h4>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
+    <!--  Start Projects Section -->
+    <section class="section section-dark" id="projects" aria-labelledby="projects-title">
+      <div class="container">
+        <div class="section-heading-row reveal">
+          <div>
+            <p class="section-kicker">Selected ELV &amp; ICT Projects</p>
+            <h2 id="projects-title">Project portfolio</h2>
+          </div>
+          <div class="project-filter" role="tablist" aria-label="Project categories">
+            <button type="button" class="filter-button" data-filter="pm" role="tab" aria-selected="false">Project Manager</button>
+            <button type="button" class="filter-button" data-filter="site" role="tab" aria-selected="false">Site Engineer</button>
+            <button type="button" class="filter-button active" data-filter="all" role="tab" aria-selected="true">All</button>
+          </div>
         </div>
+
+        <div id="project-grid" class="project-grid" aria-live="polite"></div>
+      </div>
     </section>
-    <!-- Skills Section End -->
+    <!--  End Projects Section -->
 
-    <!-- Feedback Section Start -->
-    <section id="feedback">
-        <div class="container">
-            <div class="row">
-                <h1 class="section-title wow fadeInLeft animated" data-wow-delay=".6s"><span>Hire</span><br>or Contact <br> Me</h1>
-                <!-- Hidden Form -->
-                <!-- <div class="col-sm-6 col-md-6 wow fadeInLeft animated" data-wow-delay="1.4s">
-                    <form action="" name="contact">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                            <input type="text" name="name" class="form-control" placeholder="Your name">
-                        </div>
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-envelope-o"></i></span>
-                            <input type="email" name="email" class="form-control" placeholder="Email">
-                        </div>
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-fire"></i></span>
-                            <input type="text" name="subject" class="form-control" placeholder="Subject">
-                        </div>
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-comments"></i></span>
-                            <textarea name="message" class="form-control large" placeholder="Massage"></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-green"><i class="fa fa-envelope-o" disabled></i>Send</button>
-                    </form>
-                </div> -->
-
-                <div class="col-sm-12 col-md-12  wow fadeInRight animated" data-wow-delay="1.4s">
-                    <div class="address">
-                        <div class="col-sm-8 col-md-8">
-                            <h2>Contact Info</h2>
-                            <ul class="contact-info">
-                                <li><i class="fa fa-envelope-o"></i><a href="M.Ahmed1518@Outlook.com">M.Ahmed1518@Outlook.com</a> </li>
-                                <li><i class="fa fa-mobile"></i> <a href="https://wa.me/966548306872" target="_blank"> +966-548306872</a></li>
-                                <li><i class="fa fa-map-marker"></i>Makkah, Saudi Arabia</li>
-                            </ul>
-                        </div>
-                        <div class="col-sm-4 col-md-4">
-                            <h2>Follow Me</h2>
-                            <ul class="social-icon">
-                                <li><a href="https://www.linkedin.com/in/mahmoudahmed2527/" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Linkedin" target="_blank"><i class="fa fa-linkedin"></i></a></li>
-                                <li><a href="https://www.facebook.com/profile.php?id=100002199107595" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Facebook" target="_blank"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="https://twitter.com/Mah_Mem_Oo"><i class="fa fa-twitter" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Twitter" target="_blank"></i></a></li>
-                                <li><a href="https://khamsat.com/user/mem_oo" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="5amsat" target="_blank"><i class="fa fa-code" aria-hidden="true"></i></a></li>
-                                <li><a href="https://www.instagram.com/mhmoud_a7med/" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Instagram" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-                            </ul>
-                        </div>
-
-
-
-                    </div>
-                </div>
-            </div>
+    <!--  Start Certifications Section -->
+    <section class="section section-light" id="certifications" aria-labelledby="certifications-title">
+      <div class="container">
+        <div class="section-heading-row reveal">
+          <div>
+            <p class="section-kicker">Professional Certifications</p>
+            <h2 id="certifications-title">Credentials aligned with my role</h2>
+          </div>
+          <a class="button button-outline" href="https://www.linkedin.com/in/mahmoudahmed2527/details/certifications/" target="_blank" rel="noreferrer">View all certifications</a>
         </div>
+
+        <div id="certification-grid" class="certification-grid reveal" aria-live="polite"></div>
+      </div>
     </section>
-    <!-- Feedback Section End -->
+    <!--  End Certifications Section -->
 
-    <!-- Footer section Start -->
-    <footer id="footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
-                    <div class="copyright wow fadeInUp animated" data-wow-delay=".8s">
-                        <p>Copyright &copy;
-                            <script>
-                                document.write(new Date().getFullYear());
-                            </script> | All rights reserved </p>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
-                    <div class="scroll-top text-center wow fadeInUp animated" data-wow-delay=".6s">
-                        <a href="#header"><i class="fa fa-chevron-circle-up fa-2x"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
-                    <p class="text-center wow fadeInUp animated" data-wow-delay=".8s">Designed By <a href="https://www.linkedin.com/in/mahmoudahmed2527/" target="_blank">Mahmoud Ahmed</a></p>
-                </div>
-            </div>
+    <!--  Start Expertise Section -->
+    <section class="section section-deep" id="expertise" aria-labelledby="expertise-title">
+      <div class="container">
+        <div class="section-heading-row reveal">
+          <div>
+            <p class="section-kicker">Core Expertise</p>
+            <h2 id="expertise-title">What I bring to a project</h2>
+          </div>
         </div>
-    </footer>
-    <!-- Footer section End -->
 
-    <!-- jQuery Load -->
-    <!-- <script src="assets/js/jquery-min.js"></script> -->
-    <script src="assets/js/jquery-1.12.3.min.js"></script>
-    <!-- Bootstrap JS -->
-    <script src="assets/js/bootstrap.min.js"></script>
-    <!-- WOW JS plugin for animation -->
-    <script src="assets/js/wow.js"></script>
-    <!-- All JS plugin Triggers -->
-    <script src="assets/js/main.js"></script>
-    <!-- jasny-bootstrap -->
-    <script src="assets/js/jasny-bootstrap.min.js"></script>
-    <!-- Counterup -->
-    <script src="assets/js/jquery.counterup.min.js"></script>
-    <!-- waypoints -->
-    <script src="assets/js/waypoints.min.js"></script>
-    <!-- circle progress -->
-    <script src="assets/js/circle-progress.js"></script>
-    <!-- owl carousel -->
-    <script src="assets/js/owl.carousel.js"></script>
-    <!-- lightbox -->
-    <script src="assets/js/lightbox.min.js"></script>
+        <div class="expertise-grid reveal">
+          <article class="expertise-card">
+            <div class="expertise-icon">01</div>
+            <h3>Project Management</h3>
+            <p>Planning, coordination, progress monitoring, risk awareness, documentation, and handover.</p>
+          </article>
+          <article class="expertise-card">
+            <div class="expertise-icon">02</div>
+            <h3>ELV Systems</h3>
+            <p>CCTV, access control, fire alarm, PA, IPTV, MATV, BMS, intercom, and PABX.</p>
+          </article>
+          <article class="expertise-card">
+            <div class="expertise-icon">03</div>
+            <h3>Networking &amp; Cabling</h3>
+            <p>Data networks, Wi-Fi, structured cabling, racks, termination, labeling, and Fluke testing.</p>
+          </article>
+          <article class="expertise-card">
+            <div class="expertise-icon">04</div>
+            <h3>Testing &amp; Commissioning</h3>
+            <p>System testing, integration follow-up, snag closure, quality checks, and acceptance support.</p>
+          </article>
+          <article class="expertise-card">
+            <div class="expertise-icon">05</div>
+            <h3>Team &amp; Stakeholder Coordination</h3>
+            <p>Site teams, clients, consultants, vendors, subcontractors, and internal departments.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+    <!--  End Expertise Section -->
+
+    <!--  Start Contact Section -->
+    <section class="section contact-section" id="contact" aria-labelledby="contact-title">
+      <div class="container contact-layout">
+        <div class="contact-copy reveal">
+          <p class="section-kicker">Let Us Work Together</p>
+          <h2 id="contact-title">Available for ELV &amp; ICT project opportunities</h2>
+          <p>For project management roles, ELV delivery opportunities, or professional collaboration, contact me through email, phone, LinkedIn, or WhatsApp.</p>
+          <div class="contact-list">
+            <a href="https://maps.google.com/?q=Makkah,Saudi+Arabia" target="_blank" rel="noreferrer"><strong>Location</strong><span>Makkah, Saudi Arabia</span></a>
+            <a href="mailto:M.Ahmed1518@Outlook.com"><strong>Email</strong><span>M.Ahmed1518@Outlook.com</span></a>
+            <a href="tel:+966548306872"><strong>Phone</strong><span>+966 54 830 6872</span></a>
+            <a href="https://www.linkedin.com/in/mahmoudahmed2527" target="_blank" rel="noreferrer"><strong>LinkedIn</strong><span>/in/mahmoudahmed2527</span></a>
+          </div>
+        </div>
+
+        <!--  Start Contact-Form  -->
+        <form class="contact-form reveal" id="contact-form">
+          <div class="form-row">
+            <label>
+              <span>Name</span>
+              <input type="text" name="name" autocomplete="name" required>
+            </label>
+            <label>
+              <span>Email</span>
+              <input type="email" name="email" autocomplete="email" required>
+            </label>
+          </div>
+          <label>
+            <span>Subject</span>
+            <input type="text" name="subject" required>
+          </label>
+          <label>
+            <span>Message</span>
+            <textarea name="message" rows="6" required></textarea>
+          </label>
+          <button class="button button-primary" type="submit">Send message</button>
+          <p class="form-note">The form opens your email application. No visitor data is stored by this website.</p>
+        </form>
+        <!--  End Contact-Form  -->
+      </div>
+    </section>
+    <!--  End Contact Section -->
+  </main>
+  <!--  End Main Section -->
+
+  <!--  Start Footer Section -->
+  <footer class="site-footer">
+    <div class="container footer-row">
+      <p>&copy; <span id="current-year"></span> Mahmoud Ahmed. All rights reserved.</p>
+      <a href="#">Back to top &uarr;</a>
+    </div>
+  </footer>
+  <!--  End Footer Section -->
+
+  <!--  Start project-modal Section -->
+  <dialog class="project-modal" id="project-modal" aria-labelledby="modal-title">
+    <button class="modal-close" type="button" aria-label="Close project details">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M6 6L18 18M18 6L6 18"></path>
+      </svg>
+    </button>
+    <div class="modal-gallery">
+      <div class="modal-image-wrap">
+        <img id="modal-image" src="" alt="">
+        <button class="modal-gallery-button modal-gallery-prev" id="modal-prev" type="button" aria-label="Previous project image">
+          <span aria-hidden="true">&#10094;</span>
+        </button>
+        <button class="modal-gallery-button modal-gallery-next" id="modal-next" type="button" aria-label="Next project image">
+          <span aria-hidden="true">&#10095;</span>
+        </button>
+        <span class="modal-image-counter" id="modal-image-counter" aria-live="polite"></span>
+      </div>
+      <div class="modal-thumbnails" id="modal-thumbnails" aria-label="Project image thumbnails"></div>
+    </div>
+    <div class="modal-content">
+      <p class="modal-role" id="modal-role"></p>
+      <h2 id="modal-title"></h2>
+      <p class="modal-location" id="modal-location"></p>
+      <div class="modal-tags" id="modal-tags"></div>
+      <h3>Project scope</h3>
+      <p id="modal-scope"></p>
+      <h3>Key responsibilities</h3>
+      <p id="modal-responsibilities"></p>
+    </div>
+  </dialog>
+  <!--  End project-modal Section -->
+
+  <!--  Start certificate-modal Section -->
+  <dialog class="certificate-modal" id="certificate-modal" aria-labelledby="certificate-modal-title">
+    <button class="certificate-modal-close" type="button" aria-label="Close certificate preview">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M6 6L18 18M18 6L6 18"></path>
+      </svg>
+    </button>
+    <div class="certificate-modal-header">
+      <img id="certificate-modal-logo" src="" alt="">
+      <div>
+        <p id="certificate-modal-issuer"></p>
+        <h2 id="certificate-modal-title"></h2>
+        <span id="certificate-modal-year"></span>
+      </div>
+    </div>
+    <div class="certificate-preview-wrap">
+      <img id="certificate-modal-image" src="" alt="">
+    </div>
+  </dialog>
+  <!--  End certificate-modal Section -->
 
 </body>
-
+<!--  End Body Section -->
 </html>

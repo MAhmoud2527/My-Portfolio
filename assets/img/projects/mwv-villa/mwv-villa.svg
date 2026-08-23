@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 620" role="img" aria-labelledby="t d">
+  <title id="t">MWV VILLA</title>
+  <desc id="d">Decorative project illustration for MWV VILLA</desc>
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2a2430"/>
+      <stop offset="1" stop-color="#091119"/>
+    </linearGradient>
+    <radialGradient id="r" cx="78%" cy="18%" r="65%">
+      <stop offset="0" stop-color="#91d400" stop-opacity=".22"/>
+      <stop offset="1" stop-color="#91d400" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="900" height="620" fill="url(#g)"/>
+  <rect width="900" height="620" fill="url(#r)"/>
+  <g opacity=".12" stroke="#fff">
+    <path d="M0 74h900M0 148h900M0 222h900M0 296h900M0 370h900M0 444h900M0 518h900"/>
+    <path d="M86 0v620M172 0v620M258 0v620M344 0v620M430 0v620M516 0v620M602 0v620M688 0v620M774 0v620M860 0v620"/>
+  </g>
+  
+        <g stroke="#91d400" stroke-width="4" fill="none" opacity=".95">
+          <path d="M158 390V230l230-132 230 132v160M212 390V250h352v140"/>
+          <path d="M270 390V286h92v104M422 286h82v64h-82zM238 252h300" opacity=".65"/>
+          <path d="M610 298h88v92h-88" opacity=".55"/>
+        </g>
+  <rect x="0" y="432" width="900" height="188" fill="#071018" fill-opacity=".84"/>
+  <rect x="58" y="472" width="84" height="5" rx="3" fill="#91d400"/>
+  <text x="58" y="522" fill="#ffffff" font-family="Arial, sans-serif" font-size="34" font-weight="700">MWV VILLA</text>
+  <text x="58" y="562" fill="#b8c1ca" font-family="Arial, sans-serif" font-size="20" font-weight="600" letter-spacing="2">SHARQI | RIYADH</text>
+  <circle cx="820" cy="520" r="34" fill="none" stroke="#91d400" stroke-width="3"/>
+  <path d="M806 520h28M824 510l10 10-10 10" fill="none" stroke="#91d400" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
