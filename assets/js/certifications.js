@@ -14,7 +14,7 @@ window.PORTFOLIO_CERTIFICATIONS = [
     fullTitle: "Cisco Certified Network Associate",
     issuer: "Cisco",
     year: "2024",
-    logo: "assets/img/cert-logos/cisco.jpg",
+    logo: "assets/img/cert-logos/Cisco.jpg",
     image: "assets/img/certificates/2.jpg"
   },
   {
