@@ -41,7 +41,7 @@ window.PORTFOLIO_CERTIFICATIONS = [
     fullTitle: "IP Video Surveillance System Certified Associate",
     issuer: "Dahua Technology",
     year: "2026",
-    logo: "assets/img/cert-logos/dahua.webp",
+    logo: "assets/img/cert-logos/Dahua.webp",
     image: "assets/img/certificates/5.jpeg"
   },
   {
@@ -50,7 +50,7 @@ window.PORTFOLIO_CERTIFICATIONS = [
     fullTitle: "Access Control System Certified Associate",
     issuer: "Dahua Technology",
     year: "2026",
-    logo: "assets/img/cert-logos/dahua.webp",
+    logo: "assets/img/cert-logos/Dahua.webp",
     image: "assets/img/certificates/6.jpg"
   }
 ];
