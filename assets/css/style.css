@@ -635,6 +635,15 @@ a {
   transform-origin: bottom center;
 }
 
+.about-character {
+  transition: transform 0.35s ease, filter 0.35s ease;
+  will-change: transform;
+}
+
+.about-character:hover {
+  transform: translate(8px, -8px);
+}
+
 .dot-field {
   position: absolute;
   top: -45px;
