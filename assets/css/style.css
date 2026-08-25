@@ -622,9 +622,9 @@ a {
   position: absolute;
   z-index: 2;
   right: 0;
-  bottom: -96px;
+  bottom: -100px;
   width: min(340px, 100%);
-  max-height: 580px;
+  max-height: 680px;
   object-fit: cover;
   object-position: top center;
   /* border-radius: 160px 160px 20px 20px; */
@@ -633,8 +633,8 @@ a {
 
 .dot-field {
   position: absolute;
-  top: -41px;
-  right: 20px;
+  top: -99px;
+  right: -7px;
   width: 128px;
   height: 128px;
   opacity: 0.45;
