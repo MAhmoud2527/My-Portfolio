@@ -624,17 +624,17 @@ a {
   right: 0;
   bottom: -96px;
   width: min(340px, 100%);
-  max-height: 520px;
+  max-height: 580px;
   object-fit: cover;
   object-position: top center;
-  border-radius: 160px 160px 20px 20px;
-  box-shadow: 0 25px 55px rgba(13, 26, 38, 0.18);
+  /* border-radius: 160px 160px 20px 20px; */
+  /* box-shadow: 0 25px 55px rgba(13, 26, 38, 0.18); */
 }
 
 .dot-field {
   position: absolute;
-  top: -20px;
-  right: -18px;
+  top: -41px;
+  right: 20px;
   width: 128px;
   height: 128px;
   opacity: 0.45;
@@ -1735,3 +1735,4 @@ a {
   font-size: 0.72rem;
   font-weight: 900;
 }
+
