@@ -629,12 +629,16 @@ a {
   object-position: top center;
   /* border-radius: 160px 160px 20px 20px; */
   /* box-shadow: 0 25px 55px rgba(13, 26, 38, 0.18); */
+  width: 115%;
+  max-width: none;
+  transform: translateX(-20px);
+  transform-origin: bottom center;
 }
 
 .dot-field {
   position: absolute;
-  top: -99px;
-  right: -7px;
+  top: -45px;
+  right: 4px;
   width: 128px;
   height: 128px;
   opacity: 0.45;
@@ -1735,4 +1739,3 @@ a {
   font-size: 0.72rem;
   font-weight: 900;
 }
-
