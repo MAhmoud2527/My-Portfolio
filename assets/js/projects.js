@@ -1,5 +1,53 @@
 window.PORTFOLIO_PROJECTS = [
   {
+    id: "arcon-offices",
+    category: "pm",
+    title: "Arcon Offices",
+    location: "Riyadh, Saudi Arabia",
+    role: "Project Manager - ELV Systems",
+    subtitle: "Commercial / Office Fit-Out Project",
+    // image: "assets/img/projects/kafd-309-11/kafd-309-11.svg",
+    images: [
+    "assets/img/projects/Arcon Offices/01.jpg",
+    "assets/img/projects/Arcon Offices/1.jpeg",
+    "assets/img/projects/Arcon Offices/2.jpeg",
+    "assets/img/projects/Arcon Offices/3.jpeg",
+    "assets/img/projects/Arcon Offices/4.jpeg",
+
+    ],
+   systems: [
+    "Data & Network",
+    "CCTV Hikvision",
+    "Fire Alarm",
+    "Fire Fighting",
+    "FM200"
+  ],
+  scope: "Data and network works including a 42U network cabinet, cable termination, patch panels, floor boxes, faceplates, modules and Fluke testing; Hikvision CCTV with five indoor cameras and an 8-channel NVR; fire alarm system; 21 upright sprinklers; and an FM200 fire suppression system for the controller room.",
+  responsibilities: "Managed and coordinated Data, CCTV, Fire Alarm, Fire Fighting, and FM200 activities, led the site execution team, monitored progress and quality, coordinated installation and testing activities, and oversaw Fluke testing, system programming, commissioning, and final handover."
+},
+{
+  id: "u-walk-riyadh",
+  category: "pm",
+  title: "U Walk Riyadh Project",
+  location: "Riyadh, Saudi Arabia",
+  role: "Project Manager - ELV Systems",
+  subtitle: "Commercial ELV Project",
+  images: [
+    "assets/img/projects/U-WAIK-Riyadh/01.png",
+    "assets/img/projects/U-WAIK-Riyadh/1.jpeg",
+    "assets/img/projects/U-WAIK-Riyadh/2.jpeg",
+    ],
+  systems: [
+    "Dahua CCTV",
+    "Dahua Access Control",
+    "Public Address / Sound System",
+    "Norden UPS",
+    "Fluke Testing"
+  ],
+  scope: "ELV works covering CCTV, access control, public address / sound system, UPS, and structured cabling testing, including installation, testing, commissioning, and Fluke testing.",
+  responsibilities: "Managed and coordinated ELV project activities, led the site execution team, monitored progress and quality, coordinated with project stakeholders, and oversaw testing, commissioning, Fluke testing, and final handover."
+  },
+  {
     id: "kafd-309-11",
     category: "pm",
     title: "Parcel 309 - 11th Floor",
@@ -8,6 +56,7 @@ window.PORTFOLIO_PROJECTS = [
     subtitle: "Commercial / Office Fit-Out Project",
     // image: "assets/img/projects/kafd-309-11/kafd-309-11.svg",
     images: [
+    "assets/img/projects/kafd-309-11/01.jpg",
     "assets/img/projects/kafd-309-11/1.jpg",
     "assets/img/projects/kafd-309-11/2.jpg",
     "assets/img/projects/kafd-309-11/3.jpg",
@@ -30,16 +79,84 @@ window.PORTFOLIO_PROJECTS = [
     responsibilities: "Managed and coordinated project activities, led the site execution team, monitored progress, coordinated with project stakeholders, and oversaw testing, commissioning, and handover activities."
   },
   {
+  id: "mahd-sports-academy",
+  category: "pm",
+  title: "Mahd Sports Academy - IPTV Headend System",
+  location: "Riyadh, Saudi Arabia",
+  role: "Project Manager - ELV Systems",
+  subtitle: "IPTV / MATV Headend Project",
+  // image: "assets/img/projects/mahd-sports-academy.jpg",
+  images: [
+  "assets/img/projects/Mahd Sports Academy/1.png",
+  "assets/img/projects/Mahd Sports Academy/2.jpg",
+  "assets/img/projects/Mahd Sports Academy/3.jpg",
+  "assets/img/projects/Mahd Sports Academy/4.jpg",
+  ],
+  systems: [
+    "IPTV",
+    "MATV",
+    "Ikusi by Triax Headend",
+    "Arabsat",
+    "Nilesat"
+  ],
+  scope: "Supply, installation, configuration, programming, testing, and commissioning of an IPTV/MATV Headend System including two Triax 120 cm satellite dishes for Arabsat and Nilesat, Quatro LNBs, eight coaxial cables, Ikusi by Triax Headend equipment, FTA and HDMI modules, main headend cabinet, and signal alignment and calibration.",
+  responsibilities: "Managed and coordinated the complete IPTV/MATV Headend scope from supply and installation through configuration, programming, testing, and commissioning, including dish installation and alignment, coaxial cabling, headend equipment installation, signal calibration, system integration, and final handover."
+  },
+  {
+  id: "u-walk-jeddah-football-park",
+  category: "pm",
+  title: "Football Park - U Walk Mall Jeddah",
+  location: "Jeddah, Saudi Arabia",
+  role: "Project Manager - ELV Systems",
+  subtitle: "Project #442 | Main Contractor: Arcon Advanced Contracting",
+  // image: "assets/img/projects/U-Walk-Jeddah/u-walk-jeddah.svg",
+  images: [
+  "assets/img/projects/U-Walk-Jeddah/01.PNG",
+  "assets/img/projects/U-Walk-Jeddah/1.jpg",
+  "assets/img/projects/U-Walk-Jeddah/2.jpg",
+  "assets/img/projects/U-Walk-Jeddah/3.jpg",
+  "assets/img/projects/U-Walk-Jeddah/4.jpg",
+  "assets/img/projects/U-Walk-Jeddah/5.jpg",
+  ],
+  systems: [
+    "Data & Network",
+    "Hikvision CCTV",
+    "Access Control",
+    "DISPA Sound System",
+    "Norden UPS"
+  ],
+  scope: "ELV scope comprising 57 CAT6 data points with Fluke testing and reporting, Hikvision CCTV with 15 fixed dome cameras and one PTZ camera, seven access-controlled doors, 16 DISPA pendant speakers with audio matrix and paging system, and a 6kVA Norden rack-mount UPS.",
+  responsibilities: "Managed and coordinated the complete ELV scope covering Data & Network, CCTV, Access Control, Public Address / Sound System, and UPS, including site execution leadership, installation and termination supervision, Fluke testing and reporting, system configuration and programming, progress and quality monitoring, testing, commissioning, and final handover."
+  },
+  {
     id: "kafd-309-12-13",
     category: "pm",
     title: "Parcel 309 - 12th & 13th Floors",
     location: "KAFD, Riyadh, Saudi Arabia",
     role: "Project Manager - ELV Systems",
     subtitle: "Structured Cabling Works",
-    image: "assets/img/projects/kafd-309-12-13/kafd-309-12-13.svg",
+    // image: "assets/img/projects/kafd-309-12-13/kafd-309-12-13.svg",
+    image: "assets/img/projects/kafd-309-12-13/1.jpg",
     systems: ["Data Termination", "Faceplates", "Modules", "Fluke Testing", "Labeling"],
     scope: "Structured cabling completion works across the 12th and 13th floors, including termination, faceplate installation, module installation, Fluke testing, and labeling.",
     responsibilities: "Managed the site execution team, monitored quality and progress, coordinated access and work fronts, and oversaw testing, documentation, and final handover."
+  },
+  {
+  id: "argan-tower",
+  category: "pm",
+  title: "ARGAN Tower Project",
+  location: "Riyadh, Saudi Arabia",
+  role: "Project Manager - ELV Systems",
+  subtitle: "Low Current Systems Project",
+  image: "assets/img/projects/ARGAN Tower/argan-tower.svg",
+  systems: [
+    "Data & Network",
+    "Dahua CCTV",
+    "Vehicle Access / LPR",
+    "Grandstream PABX"
+  ],
+  scope: "Complete Low Current scope including 190 CAT6A data points, Ruijie network switching infrastructure, 158 Dahua IP cameras, three 64-channel NVRs, four vehicle entry/exit gates with LPR/ANPR cameras, centralized management, and Grandstream PABX with Fanvil telephone sets.",
+  responsibilities: "Managed and coordinated the complete Low Current scope across Data & Network, CCTV, Vehicle Access/LPR, and PABX systems, including installation and termination supervision, configuration and programming, progress and quality monitoring, testing, commissioning, and final handover."
   },
   {
     id: "mwv-villa-sharqi",
