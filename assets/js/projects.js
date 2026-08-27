@@ -4,7 +4,7 @@ window.PORTFOLIO_PROJECTS = [
     category: "pm",
     title: "Arcon Offices",
     location: "Riyadh, Saudi Arabia",
-    role: "Project Manager - ELV Systems",
+    role: "Project Manager - ELV & Fire Systems",
     subtitle: "Commercial / Office Fit-Out Project",
     // image: "assets/img/projects/kafd-309-11/kafd-309-11.svg",
     images: [
