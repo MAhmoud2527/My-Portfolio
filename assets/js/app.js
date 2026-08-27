@@ -4,6 +4,10 @@
   const projects = Array.isArray(window.PORTFOLIO_PROJECTS) ? window.PORTFOLIO_PROJECTS : [];
   const certifications = Array.isArray(window.PORTFOLIO_CERTIFICATIONS) ? window.PORTFOLIO_CERTIFICATIONS : [];
   const grid = document.getElementById("project-grid");
+  const projectsToggle = document.getElementById("projects-toggle");
+  const PROJECTS_INITIAL_LIMIT = 8;
+  let currentProjectFilter = "all";
+  let showAllProjects = false;
   const certificationGrid = document.getElementById("certification-grid");
   const modal = document.getElementById("project-modal");
   const modalClose = modal?.querySelector(".modal-close");
@@ -159,21 +163,45 @@
     `;
   }
 
-  function renderProjects(filter = "all") {
+  function renderProjects(filter = currentProjectFilter) {
     if (!grid) return;
 
+    currentProjectFilter = filter;
+
+    const filteredProjects = filter === "all"
+      ? projects
+      : projects.filter((project) => project.category === filter);
+
+    const visibleProjects = showAllProjects
+      ? filteredProjects
+      : filteredProjects.slice(0, PROJECTS_INITIAL_LIMIT);
+
     if (filter === "all") {
-      const pmProjects = projects.filter((project) => project.category === "pm");
-      const siteProjects = projects.filter((project) => project.category === "site");
-      grid.innerHTML = [
-        groupHeading("Project Manager Projects", pmProjects.length),
-        ...pmProjects.map(projectCard),
-        groupHeading("Site Engineer Projects", siteProjects.length),
-        ...siteProjects.map(projectCard)
-      ].join("");
+      const pmProjects = visibleProjects.filter((project) => project.category === "pm");
+      const siteProjects = visibleProjects.filter((project) => project.category === "site");
+      const content = [];
+
+      if (pmProjects.length) {
+        content.push(groupHeading("Project Manager Projects", projects.filter((project) => project.category === "pm").length));
+        content.push(...pmProjects.map(projectCard));
+      }
+
+      if (siteProjects.length) {
+        content.push(groupHeading("Site Engineer Projects", projects.filter((project) => project.category === "site").length));
+        content.push(...siteProjects.map(projectCard));
+      }
+
+      grid.innerHTML = content.join("");
     } else {
-      const filtered = projects.filter((project) => project.category === filter);
-      grid.innerHTML = filtered.map(projectCard).join("");
+      grid.innerHTML = visibleProjects.map(projectCard).join("");
+    }
+
+    if (projectsToggle) {
+      const hasMore = filteredProjects.length > PROJECTS_INITIAL_LIMIT;
+      projectsToggle.hidden = !hasMore;
+      projectsToggle.textContent = showAllProjects
+        ? "Show Fewer Projects"
+        : `View All Projects (${filteredProjects.length})`;
     }
 
     grid.querySelectorAll(".project-open").forEach((button) => {
@@ -303,8 +331,18 @@
         item.classList.toggle("active", active);
         item.setAttribute("aria-selected", String(active));
       });
+      showAllProjects = false;
       renderProjects(button.dataset.filter || "all");
     });
+  });
+
+  projectsToggle?.addEventListener("click", () => {
+    showAllProjects = !showAllProjects;
+    renderProjects(currentProjectFilter);
+
+    if (!showAllProjects) {
+      document.getElementById("projects")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
   });
 
   modalPrev?.addEventListener("click", showPreviousProjectImage);
