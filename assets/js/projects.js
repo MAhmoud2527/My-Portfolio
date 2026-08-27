@@ -111,7 +111,7 @@ window.PORTFOLIO_PROJECTS = [
   subtitle: "Project #442 | Main Contractor: Arcon Advanced Contracting",
   // image: "assets/img/projects/U-Walk-Jeddah/u-walk-jeddah.svg",
   images: [
-  "assets/img/projects/U-Walk-Jeddah/01.PNG",
+  "assets/img/projects/U-Walk-Jeddah/01.png",
   "assets/img/projects/U-Walk-Jeddah/1.jpg",
   "assets/img/projects/U-Walk-Jeddah/2.jpg",
   "assets/img/projects/U-Walk-Jeddah/3.jpg",
