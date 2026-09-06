@@ -48,6 +48,27 @@ window.PORTFOLIO_PROJECTS = [
   responsibilities: "Managed and coordinated ELV project activities, led the site execution team, monitored progress and quality, coordinated with project stakeholders, and oversaw testing, commissioning, Fluke testing, and final handover."
   },
   {
+  id: "Al-Subaie Office",
+  category: "pm",
+  title: "Al-Subaie Office – Central IPTV & CCTV Integration",
+  location: "Riyadh, Saudi Arabia",
+  role: "Project Manager - ELV Systems",
+  subtitle: "Office ELV & ICT Project",
+  images: [
+    "assets/img/projects/al-subaie-office/1.jpeg",
+    "assets/img/projects/al-subaie-office/2.jpeg",
+    "assets/img/projects/al-subaie-office/3.jpeg",
+    "assets/img/projects/al-subaie-office/4.jpeg",
+    ],
+  systems: [
+    "Micorus Central IPTV",
+    "Dahua CCTV Integration",
+    "Ruijie Data Network"
+  ],
+  scope: "Supply, installation, configuration, and commissioning of a Micorus Central IPTV system, including NileSat and Arabsat channel configuration, network setup, and CCTV integration to display selected surveillance cameras as dedicated channels on TV screens.",
+  responsibilities: "Managed and coordinated the Central IPTV project activities, led the site execution team, monitored progress and quality, and coordinated material supply and installation. Oversaw IPTV headend installation, Ruijie network configuration, system programming, and the integration of selected CCTV camera streams into the IPTV channel lineup. Supervised testing, commissioning, and final project handover."
+  },
+  {
     id: "kafd-309-11",
     category: "pm",
     title: "Parcel 309 - 11th Floor",
@@ -111,12 +132,17 @@ window.PORTFOLIO_PROJECTS = [
   subtitle: "Project #442 | Main Contractor: Arcon Advanced Contracting",
   // image: "assets/img/projects/U-Walk-Jeddah/u-walk-jeddah.svg",
   images: [
-  "assets/img/projects/U-Walk-Jeddah/01.png",
   "assets/img/projects/U-Walk-Jeddah/1.jpg",
   "assets/img/projects/U-Walk-Jeddah/2.jpg",
   "assets/img/projects/U-Walk-Jeddah/3.jpg",
   "assets/img/projects/U-Walk-Jeddah/4.jpg",
   "assets/img/projects/U-Walk-Jeddah/5.jpg",
+  "assets/img/projects/U-Walk-Jeddah/6.jpg",
+  "assets/img/projects/U-Walk-Jeddah/7.jpg",
+  "assets/img/projects/U-Walk-Jeddah/8.jpg",
+  "assets/img/projects/U-Walk-Jeddah/9.jpg",
+  "assets/img/projects/U-Walk-Jeddah/5.jpg",
+  "assets/img/projects/U-Walk-Jeddah/11.jpg",
   ],
   systems: [
     "Data & Network",
