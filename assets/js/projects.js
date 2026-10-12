@@ -1,4 +1,67 @@
 window.PORTFOLIO_PROJECTS = [
+    {
+    id: "private-palace-makkah",
+    category: "pm",
+    title: "Private Palace - Makkah",
+    location: "Makkah, Saudi Arabia",
+    role: "Project Manager - ELV & ICT Systems",
+    subtitle: "Private Residential Project | Oct 2026 - Present",
+    images: [
+    "assets/img/projects/private-palace-makkah/1.jpg",
+    "assets/img/projects/private-palace-makkah/3.jpg",
+    "assets/img/projects/private-palace-makkah/4.jpg",
+    "assets/img/projects/private-palace-makkah/5.jpg",
+    "assets/img/projects/private-palace-makkah/6.jpg",
+    "assets/img/projects/private-palace-makkah/7.jpg",
+    "assets/img/projects/private-palace-makkah/8.jpg",
+    "assets/img/projects/private-palace-makkah/9.jpg",
+    "assets/img/projects/private-palace-makkah/10.jpg",
+    ],
+    systems: [
+      "Dahua CCTV",
+      "Fanvil IP Intercom",
+      "Huawei Network & Wi-Fi",
+      "Structured Cabling & Fiber Optics",
+      "Sound System",
+      "SMATV",
+      "Grandstream IP PABX",
+      "Dahua Fire Alarm"
+    ],
+    scope: "ELV and ICT works covering 61 surveillance cameras, 10 outdoor intercom stations and 16 indoor monitors, 350 CAT6A termination and testing points, 7 network cabinets, 14 access switches, 91 access points, and OM3 fiber connectivity. The scope also includes sound systems, SMATV distribution, IP telephony, and addressable fire alarm.",
+    responsibilities: "Manage and coordinate ELV and ICT project activities, lead the site execution team, review drawings and equipment requirements, coordinate material procurement, monitor progress and quality, and plan testing, commissioning, and final handover."
+  },
+  {
+    id: "general-food-security-authority",
+    category: "pm",
+    title: "General Food Security Authority",
+    location: "Al-Jouf, Tabuk & Khamis Mushait, Saudi Arabia",
+    role: "Project Manager - ELV Systems",
+    subtitle: "Government Multi-Site Project | Sep - Oct 2026 | Completed",
+    images: [
+    "assets/img/projects/general-food-security/1.jpg",
+    "assets/img/projects/general-food-security/2.jpg",
+    "assets/img/projects/general-food-security/3.jpeg",
+    "assets/img/projects/general-food-security/4.jpeg",
+    "assets/img/projects/general-food-security/5.jpeg",
+    "assets/img/projects/general-food-security/6.jpeg",
+    "assets/img/projects/general-food-security/7.jpeg",
+    "assets/img/projects/general-food-security/8.jpeg",
+    "assets/img/projects/general-food-security/6.jpeg",
+    "assets/img/projects/general-food-security/10.jpeg",
+    "assets/img/projects/general-food-security/11.jpeg",
+    "assets/img/projects/general-food-security/12.jpg",
+    "assets/img/projects/general-food-security/13.jpg",
+    ],
+    systems: [
+      "CCTV",
+      "PTZ Cameras",
+      "Data & Network",
+      "Single-Mode Fiber Optics",
+      "Camera & NVR Maintenance"
+    ],
+    scope: "Security and network works across three government facilities. Al-Jouf included 40 surveillance cameras, 5 outdoor switches, 3 indoor switches, and single-mode fiber connectivity. Tabuk included 19 surveillance cameras, 3 PTZ cameras, and 4 outdoor switches. Khamis Mushait covered maintenance of existing cameras and NVRs.",
+    responsibilities: "Managed and coordinated project activities, with direct responsibility for Al-Jouf site follow-up, technical team coordination, daily progress reporting, and progress and quality monitoring. Coordinated execution activities through project completion and handover."
+  },
   {
     id: "arcon-offices",
     category: "pm",
