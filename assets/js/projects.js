@@ -6,6 +6,7 @@ window.PORTFOLIO_PROJECTS = [
     location: "Makkah, Saudi Arabia",
     role: "Project Manager - ELV & ICT Systems",
     subtitle: "Private Residential Project | Oct 2026 - Present",
+    status: "in-progress",
     images: [
     "assets/img/projects/private-palace-makkah/1.jpg",
     "assets/img/projects/private-palace-makkah/3.jpg",
@@ -37,6 +38,7 @@ window.PORTFOLIO_PROJECTS = [
     location: "Al-Jouf, Tabuk & Khamis Mushait, Saudi Arabia",
     role: "Project Manager - ELV Systems",
     subtitle: "Government Multi-Site Project | Sep - Oct 2026 | Completed",
+    status: "in-progress",
     images: [
     "assets/img/projects/general-food-security/1.jpg",
     "assets/img/projects/general-food-security/2.jpg",
@@ -70,6 +72,7 @@ window.PORTFOLIO_PROJECTS = [
     role: "Project Manager - ELV & Fire Systems",
     subtitle: "Commercial / Office Fit-Out Project",
     // image: "assets/img/projects/kafd-309-11/kafd-309-11.svg",
+    status: "completed",
     images: [
     "assets/img/projects/Arcon Offices/01.jpg",
     "assets/img/projects/Arcon Offices/1.jpeg",
@@ -95,6 +98,7 @@ window.PORTFOLIO_PROJECTS = [
   location: "Riyadh, Saudi Arabia",
   role: "Project Manager - ELV Systems",
   subtitle: "Commercial ELV Project",
+  status: "completed",
   images: [
     "assets/img/projects/U-WAIK-Riyadh/01.png",
     "assets/img/projects/U-WAIK-Riyadh/1.jpeg",
@@ -117,6 +121,7 @@ window.PORTFOLIO_PROJECTS = [
   location: "Riyadh, Saudi Arabia",
   role: "Project Manager - ELV Systems",
   subtitle: "Office ELV & ICT Project",
+  status: "completed",
   images: [
     "assets/img/projects/al-subaie-office/1.jpeg",
     "assets/img/projects/al-subaie-office/2.jpeg",
@@ -139,6 +144,7 @@ window.PORTFOLIO_PROJECTS = [
     role: "Project Manager - ELV Systems",
     subtitle: "Commercial / Office Fit-Out Project",
     // image: "assets/img/projects/kafd-309-11/kafd-309-11.svg",
+    status: "completed",
     images: [
     "assets/img/projects/kafd-309-11/01.jpg",
     "assets/img/projects/kafd-309-11/1.jpg",
@@ -170,6 +176,7 @@ window.PORTFOLIO_PROJECTS = [
   role: "Project Manager - ELV Systems",
   subtitle: "IPTV / MATV Headend Project",
   // image: "assets/img/projects/mahd-sports-academy.jpg",
+  status: "completed",
   images: [
   "assets/img/projects/Mahd Sports Academy/1.png",
   "assets/img/projects/Mahd Sports Academy/2.jpg",
@@ -194,6 +201,7 @@ window.PORTFOLIO_PROJECTS = [
   role: "Project Manager - ELV Systems",
   subtitle: "Project #442 | Main Contractor: Arcon Advanced Contracting",
   // image: "assets/img/projects/U-Walk-Jeddah/u-walk-jeddah.svg",
+  status: "completed",
   images: [
   "assets/img/projects/U-Walk-Jeddah/1.jpg",
   "assets/img/projects/U-Walk-Jeddah/2.jpg",
@@ -225,6 +233,7 @@ window.PORTFOLIO_PROJECTS = [
     role: "Project Manager - ELV Systems",
     subtitle: "Structured Cabling Works",
     // image: "assets/img/projects/kafd-309-12-13/kafd-309-12-13.svg",
+    status: "completed",
     image: "assets/img/projects/kafd-309-12-13/1.jpg",
     systems: ["Data Termination", "Faceplates", "Modules", "Fluke Testing", "Labeling"],
     scope: "Structured cabling completion works across the 12th and 13th floors, including termination, faceplate installation, module installation, Fluke testing, and labeling.",
@@ -238,6 +247,7 @@ window.PORTFOLIO_PROJECTS = [
   role: "Project Manager - ELV Systems",
   subtitle: "Low Current Systems Project",
   image: "assets/img/projects/ARGAN Tower/argan-tower.svg",
+  status: "in-progress",
   systems: [
     "Data & Network",
     "Dahua CCTV",
@@ -254,6 +264,7 @@ window.PORTFOLIO_PROJECTS = [
     location: "Riyadh, Saudi Arabia",
     role: "Project Manager - ELV Systems",
     subtitle: "Private Villa",
+    status: "in-progress",
     image: "assets/img/projects/mwv-villa/mwv-villa.svg",
     systems: ["Data Network", "IP & Analog Telephone", "IPTV", "Wi-Fi", "CCTV"],
     scope: "Supply and installation of network racks, cable termination, Fluke testing, system programming, testing, and commissioning for a private villa.",
@@ -266,6 +277,7 @@ window.PORTFOLIO_PROJECTS = [
     location: "Riyadh, Saudi Arabia",
     role: "Project Manager - ELV Systems",
     subtitle: "2 Typical Private Villas",
+    status: "in-progress",
     image: "assets/img/projects/subaie-villas/subaie-villas.svg",
     systems: ["Data Network", "Wi-Fi", "IPTV", "Central Dish System"],
     scope: "Supply, installation, termination, testing, commissioning, and programming of ELV and ICT systems across two typical private villas.",
@@ -279,6 +291,7 @@ window.PORTFOLIO_PROJECTS = [
     role: "Site Engineer - ELV Systems",
     subtitle: "Hotel - 904 Guest Rooms",
     // image: "assets/img/projects/saleh-hotel/saleh-hotel.svg",
+    status: "completed",
     images: [
     "assets/img/projects/saleh-hotel/1.jpg",
     "assets/img/projects/saleh-hotel/2.jpg",
@@ -302,6 +315,7 @@ window.PORTFOLIO_PROJECTS = [
     role: "Site Engineer - ELV Systems",
     subtitle: "Hotel - 502 Guest Rooms",
     // image: "assets/img/projects/mawakib-hotel/mawakib-hotel.svg",
+    status: "completed",
     images: [
     "assets/img/projects/mawakib-hotel/1.png",
     "assets/img/projects/mawakib-hotel/2.png",
@@ -336,6 +350,7 @@ window.PORTFOLIO_PROJECTS = [
     role: "Site Engineer - ELV Systems",
     subtitle: "Hajj Pilgrims Service Facility | Consultant: EHAF",
     // image: "assets/img/projects/namira/namira.svg",
+    status: "completed",
      images: [
     "assets/img/projects/namira/1.png",
     "assets/img/projects/namira/2.jpg",
@@ -368,6 +383,7 @@ window.PORTFOLIO_PROJECTS = [
     role: "Site Engineer - ELV Systems",
     subtitle: "Hajj Pilgrims Service Facility | Consultant: Egis",
     // image: "assets/img/projects/muzdalifah-camp/muzdalifah.svg",
+    status: "completed",
     images: [
     "assets/img/projects/muzdalifah-camp/1.jpg",
     "assets/img/projects/muzdalifah-camp/2.jpg",
@@ -401,6 +417,7 @@ window.PORTFOLIO_PROJECTS = [
     role: "Site Engineer - ELV Systems",
     subtitle: "Client: Kidana Development Company",
     // image: "assets/img/projects/mina-camp/mina-camp.svg",
+    status: "completed",
         images: [
     "assets/img/projects/mina-camp/1.jpg",
     "assets/img/projects/mina-camp/2.jpg",
@@ -417,6 +434,7 @@ window.PORTFOLIO_PROJECTS = [
     role: "Site Engineer - ELV Systems",
     subtitle: "Residential Compound - 9 Villas",
     // image: "assets/img/projects/awali-villas/awali-villas.svg",
+    status: "in-progress",
     images: [
     "assets/img/projects/awali-villas/1.jpg",
     "assets/img/projects/awali-villas/2.jpg",
@@ -444,6 +462,7 @@ window.PORTFOLIO_PROJECTS = [
     location: "Al-Awali, Makkah, Saudi Arabia",
     role: "Site Engineer - ELV Systems",
     subtitle: "Private Villa",
+    status: "completed",
     image: "assets/img/projects/bandar-villa/1.jpg",
     systems: ["CCTV Hikvision", "PABX Yeastar", "Sound CMX", "MATV TRIAX", "Network Ruijie"],
     scope: "Installation and commissioning of CCTV, telephony, sound, IPTV, and data network systems for a private villa.",

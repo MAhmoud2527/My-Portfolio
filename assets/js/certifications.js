@@ -18,15 +18,6 @@ window.PORTFOLIO_CERTIFICATIONS = [
     image: "assets/img/certificates/2.jpg"
   },
   {
-    id: "rcna",
-    title: "RCNA",
-    fullTitle: "Ruijie Certified Network Associate (Routing & Switching)",
-    issuer: "Ruijie Networks",
-    year: "2025",
-    logo: "assets/img/cert-logos/Ruijie.png",
-    image: "assets/img/certificates/3.jpg"
-  },
-  {
     id: "lcs3",
     title: "LCS³",
     fullTitle: "Structured Cabling System LCS³",
@@ -45,12 +36,21 @@ window.PORTFOLIO_CERTIFICATIONS = [
     image: "assets/img/certificates/5.jpeg"
   },
   {
-    id: "dahua-acs",
-    title: "Dahua ACS Associate",
-    fullTitle: "Access Control System Certified Associate",
-    issuer: "Dahua Technology",
-    year: "2026",
-    logo: "assets/img/cert-logos/Dahua.webp",
-    image: "assets/img/certificates/6.jpg"
-  }
+  id: "legrand-grey-space",
+  title: "Data Center Infrastructure",
+  fullTitle: "Grey Space in Datacenters Training",
+  issuer: "Legrand Saudi Arabia",
+  year: "2026",
+  logo: "assets/img/cert-logos/legrand.webp",
+  image: "assets/img/certificates/7.jpg"
+},
+{
+  id: "reyee-sdwan",
+  title: "Reyee SD-WAN",
+  fullTitle: "EG Products & Reyee SD-WAN Training",
+  issuer: "Ruijie Networks",
+  year: "2026",
+  logo: "assets/img/cert-logos/Ruijie.png",
+  image: "assets/img/certificates/8.jpg"
+}
 ];

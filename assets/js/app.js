@@ -67,6 +67,11 @@
     return `
       <article class="project-card reveal" data-category="${escapeHtml(project.category)}">
         <div class="project-image">
+        ${project.status === "completed"
+          ? '<span class="project-status project-status-completed">Completed</span>'
+          : project.status === "in-progress"
+          ? '<span class="project-status project-status-progress">In Progress</span>'
+          : ""}
           <img src="${escapeHtml(coverImage?.src || project.image || "")}" alt="${escapeHtml(coverImage?.alt || `Project image for ${project.title}`)}" loading="lazy" width="900" height="620">
         </div>
         <div class="project-body">
@@ -444,3 +449,49 @@
   updateHeader();
   updateActiveNav();
 })();
+
+// Hero Background Animation & NET background
+(() => {
+  const hero = document.querySelector(".hero");
+  const background = document.getElementById("hero-net");
+
+  const mobile = window.matchMedia("(max-width: 900px)").matches;
+  const reducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  ).matches;
+
+  if (
+    !hero ||
+    !background ||
+    mobile ||
+    reducedMotion ||
+    !window.VANTA?.NET
+  ) return;
+
+  try {
+    window.heroNetEffect = VANTA.NET({
+      el: background,
+      THREE: window.THREE,
+      mouseControls: true,
+      touchControls: false,
+      gyroControls: false,
+      minHeight: 200,
+      minWidth: 200,
+      scale: 1,
+      scaleMobile: 1,
+      color: 0x91d400,
+      backgroundColor: 0x0b1118,
+      points: 6,
+      maxDistance: 18,
+      spacing: 22,
+      showDots: true
+    });
+
+    hero.classList.add("net-ready");
+    window.heroNetEffect.points.forEach((point) => {
+  point.r *= 3;
+});
+  } catch (error) {
+    console.warn("NET background could not start.", error);
+  }
+  })();
