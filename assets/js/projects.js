@@ -38,7 +38,7 @@ window.PORTFOLIO_PROJECTS = [
     location: "Al-Jouf, Tabuk & Khamis Mushait, Saudi Arabia",
     role: "Project Manager - ELV Systems",
     subtitle: "Government Multi-Site Project | Sep - Oct 2026 | Completed",
-    status: "in-progress",
+    status: "completed",
     images: [
     "assets/img/projects/general-food-security/1.jpg",
     "assets/img/projects/general-food-security/2.jpg",
