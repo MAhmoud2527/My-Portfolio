@@ -1,6 +1,12 @@
 "use strict";
 
 const englishLabels = {
+  "ترتيب الأقسام وقائمة التنقل": "Section order and navigation",
+  "حفظ التعديلات": "Save changes",
+  "احفظ تعديلات الجزء الحالي قبل الانتقال.": "Save changes in the current editor before leaving.",
+  "اتحفظت التعديلات في الجلسة الحالية. اضغط نشر التعديلات لتحديث الموقع.": "Changes are saved for this session. Select Publish changes to update the site.",
+  "تعديلات تحتاج حفظ": "Unsaved edits",
+  "تعديلات محفوظة وجاهزة للنشر": "Saved and ready to publish",
   "عنوان القسم": "Section title",
   "العنوان التمهيدي": "Eyebrow text",
   "الاسم المعروض": "Display name",

@@ -78,7 +78,7 @@ const collections = {
 const $ = (selector) => document.querySelector(selector);
 const editor = $("#editor");
 const picker = $("#dialog");
-const session = { token: "", head: "", source: null, baseline: null, doc: null, records: {}, uploads: new Map(), current: "", activeItem: null, busy: false };
+const session = { token: "", head: "", source: null, saved: null, baseline: null, doc: null, records: {}, uploads: new Map(), current: "", activeItem: null, busy: false };
 const staticLabels = [...document.querySelectorAll("[data-en]")].map((node) => [node, node.textContent]);
 
 function renderLanguage() {
@@ -192,7 +192,8 @@ function validInputs() {
 }
 
 function selectSection(id, skipValidation = false) {
-  if (!skipValidation && !validInputs()) return;
+  if (!skipValidation && id === session.current) return;
+  if (!skipValidation && !readyToLeave()) return;
   if (session.current !== id) session.activeItem = null;
   session.current = id;
   render();
@@ -212,7 +213,7 @@ function patchPage() {
     if (section.dataset.nav === "false" || (!oldLink && section.dataset.nav !== "true")) continue;
     const a = oldLink || element("a");
     a.href = "#" + section.id;
-    a.textContent = section.dataset.navLabel || oldLink?.textContent || section.querySelector("h2")?.textContent || Portfolio.sectionNames[kind];
+    a.textContent = section.dataset.navLabel || oldLink?.textContent || section.querySelector("h2")?.textContent || (kind === "hero" ? "Home" : Portfolio.sectionNames[kind]);
     nav.append(a);
   }
   const ids = new Set(currentSections.map((section) => section.id));
@@ -230,13 +231,47 @@ function patchPage() {
   return "<!doctype html>\n" + working.documentElement.outerHTML + "\n";
 }
 
-function pendingChanges() {
+function workingSnapshot() {
+  const snapshot = { pageDOM: session.doc.documentElement.outerHTML };
+  for (const kind of Object.keys(recordFields)) snapshot[kind] = Portfolio.writeRecords(kind, session.records[kind]);
+  return snapshot;
+}
+
+function hasUnsavedChanges(snapshot = workingSnapshot()) {
+  return Object.keys(snapshot).some((key) => snapshot[key] !== session.saved[key]);
+}
+
+function readyToLeave() {
+  if (!validInputs()) return false;
+  if (!hasUnsavedChanges()) return true;
+  notify(tr("احفظ تعديلات الجزء الحالي قبل الانتقال."), true);
+  editor.querySelector(".save-draft:not([hidden])")?.focus();
+  return false;
+}
+
+function saveDraft() {
+  if (!validInputs() || session.busy) return;
+  try {
+    checkRecords();
+    session.saved = workingSnapshot();
+    updatePending();
+    notify(tr("اتحفظت التعديلات في الجلسة الحالية. اضغط نشر التعديلات لتحديث الموقع."));
+  } catch (error) {
+    notify(error.message, true);
+  }
+}
+
+function saveButton() {
+  return button(tr("حفظ التعديلات"), saveDraft, "primary save-draft");
+}
+
+function pendingChanges(snapshot = workingSnapshot()) {
   const changes = [];
-  if (session.doc.documentElement.outerHTML !== session.source.pageDOM) {
+  if (snapshot.pageDOM !== session.source.pageDOM) {
     changes.push({ path: Portfolio.paths.page, content: patchPage() });
   }
   for (const kind of Object.keys(recordFields)) {
-    const next = Portfolio.writeRecords(kind, session.records[kind]);
+    const next = snapshot[kind];
     if (next !== session.source[kind]) changes.push({ path: Portfolio.paths[kind], content: next });
   }
   return changes;
@@ -244,9 +279,20 @@ function pendingChanges() {
 
 function updatePending() {
   if (!session.doc) return;
-  const count = pendingChanges().length;
-  $("#draft").textContent = count ? tr("تعديلات غير منشورة") : tr("آخر نسخة من GitHub");
-  $("#publish").disabled = !count || session.busy;
+  const snapshot = workingSnapshot();
+  const unsaved = hasUnsavedChanges(snapshot);
+  const changed = Object.keys(snapshot).some((key) => snapshot[key] !== session.source[key]);
+  const ready = changed && !unsaved && !session.busy;
+  $("#draft").textContent = unsaved ? tr("تعديلات تحتاج حفظ") : changed ? tr("تعديلات محفوظة وجاهزة للنشر") : tr("آخر نسخة من GitHub");
+  const publishButton = $("#publish");
+  publishButton.disabled = !ready;
+  publishButton.classList.toggle("publish-ready", ready);
+  const itemEditor = editor.querySelector(".project-edit");
+  for (const save of editor.querySelectorAll(".save-draft")) {
+    save.hidden = Boolean(itemEditor) && !itemEditor.contains(save);
+    save.disabled = !unsaved || session.busy;
+  }
+  for (const fieldGroup of editor.querySelectorAll(".section-fields")) fieldGroup.inert = Boolean(itemEditor);
 }
 
 function assetUrl(path) {
@@ -269,7 +315,7 @@ function mediaControl(label, type, getValue, setValue) {
   const title = element("label", tr(label));
   const input = element("input");
   const gallery = type === "gallery";
-  const list = element("div", "", gallery ? "media-list sortable-gallery" : "media-list");
+  const list = element("div", "", gallery ? "media-list sortable-gallery" : type === "image" ? "media-list single-image-preview" : "media-list");
   const sortHint = gallery ? element("p", tr("اسحب الصور لتغيير ترتيبها."), "hint") : null;
   let dragIndex = null;
   input.type = "file";
@@ -504,19 +550,19 @@ function renderSidebar() {
 }
 
 function navOptions(section, title) {
-  if (!section.id) return;
   const nav = session.doc.getElementById("primary-nav");
   const old = Array.from(nav.querySelectorAll("a")).find((link) => link.getAttribute("href") === "#" + section.id);
   const enabled = element("input");
   enabled.type = "checkbox";
   enabled.setAttribute("role", "switch");
   enabled.checked = section.dataset.nav !== "false" && (section.dataset.nav === "true" || Boolean(old));
-  const nameField = renderField(field("nav", tr("اسم القسم في قائمة التنقل")), () => section.dataset.navLabel || old?.textContent || nameOf(section), (value) => {
+  const nameField = renderField(field("nav", tr("اسم القسم في قائمة التنقل")), () => section.dataset.navLabel || old?.textContent || (kindOf(section) === "hero" ? "Home" : nameOf(section)), (value) => {
     section.dataset.navLabel = value.trim();
     renderSidebar();
   });
   nameField.hidden = !enabled.checked;
   enabled.addEventListener("change", () => {
+    if (enabled.checked && !section.id) section.id = "hero";
     section.dataset.nav = String(enabled.checked);
     nameField.hidden = !enabled.checked;
     updatePending();
@@ -528,7 +574,34 @@ function navOptions(section, title) {
 }
 
 function renderSettings() {
-  editor.append(element("h2", tr("إعدادات الموقع")));
+  const header = element("div", "", "editor-head");
+  header.append(element("h2", tr("إعدادات الموقع")), saveButton());
+  editor.append(header);
+  const order = element("div", "", "section-order");
+  const orderItems = element("div", "", "section-order-items");
+  const list = sections();
+  order.append(element("h3", tr("ترتيب الأقسام وقائمة التنقل")), orderItems);
+  list.forEach((section, index) => {
+    const row = element("div", "", "section-order-row");
+    const label = element("strong", nameOf(section));
+    const top = element("div", "", "collection-head");
+    const actions = element("div", "", "tools");
+    const shift = (delta) => {
+      if (!validInputs()) return;
+      move(list, index, delta);
+      render();
+      $("#section-order-" + (index + delta) + (delta < 0 ? "-up" : "-down"))?.focus();
+    };
+    const up = button(tr("↑ لأعلى"), () => shift(-1), "quiet", index === 0);
+    const down = button(tr("↓ لأسفل"), () => shift(1), "quiet", index === list.length - 1);
+    up.id = "section-order-" + index + "-up";
+    down.id = "section-order-" + index + "-down";
+    actions.append(up, down);
+    top.append(label, actions);
+    row.append(top, navOptions(section, top));
+    orderItems.append(row);
+  });
+  editor.append(order);
   const doc = session.doc;
   markupFields(editor, doc, [
     markup("title", tr("عنوان تبويب المتصفح")), markup('meta[name="description"]', tr("وصف الموقع في نتائج البحث"), "long", "content"),
@@ -554,6 +627,7 @@ function render() {
   editor.replaceChildren();
   if (session.current === "settings") {
     renderSettings();
+    updatePending();
     return;
   }
   const list = sections();
@@ -565,21 +639,17 @@ function render() {
   const section = list[index];
   const kind = kindOf(section);
   const header = element("div", "", "editor-head");
-  const title = element("div", "", "section-heading");
-  title.append(element("h2", nameOf(section)));
-  const navName = navOptions(section, title);
-  header.append(title);
-  const tools = element("div", "", "tools");
-  tools.append(button(tr("↑ لأعلى"), () => { if (validInputs()) { move(list, index, -1); render(); updatePending(); } }, "quiet", index === 0));
-  tools.append(button(tr("↓ لأسفل"), () => { if (validInputs()) { move(list, index, 1); render(); updatePending(); } }, "quiet", index === list.length - 1));
+  header.append(element("h2", nameOf(section)));
+  const tools = element("div", "", "tools section-fields");
+  tools.append(saveButton());
   tools.append(button(tr("حذف القسم"), async () => {
+    if (!readyToLeave()) return;
     const detail = kind === "projects" || kind === "certifications"
       ? tr("هيختفي القسم من الصفحة عند النشر، وتفضل عناصره محفوظة لو أضفته مرة تانية.")
       : tr("القسم ومحتواه الحالي هيتشالوا من الصفحة عند النشر.");
     if (await ask(tr("حذف قسم ") + nameOf(section), detail, tr("حذف القسم"))) {
       section.remove();
-      selectSection(sections()[0]?.id || (sections().length ? "hero" : "settings"), true);
-      updatePending();
+      selectSection("settings", true);
     }
   }, "danger quiet"));
   header.append(tools);
@@ -587,9 +657,10 @@ function render() {
   const group = markupFields(editor, section, sectionFields[kind], () => {
     if (kind === "custom" && !section.dataset.navLabel) renderSidebar();
   });
-  if (navName) group.append(navName);
+  group.classList.add("section-fields");
   for (const collection of collections[kind] || []) editor.append(renderMarkupCollection(section, collection));
   if (recordFields[kind]) editor.append(renderContentRecords(kind));
+  updatePending();
 }
 
 function parsePage(source) {
@@ -599,7 +670,7 @@ function parsePage(source) {
 }
 
 async function addSection() {
-  if (!validInputs()) return;
+  if (!readyToLeave()) return;
   const present = new Set(sections().map(kindOf));
   const select = element("select");
   select.setAttribute("aria-label", tr("نوع القسم"));
@@ -692,7 +763,7 @@ async function connect(event) {
         throw new Error(tr("المتصفح ما قدرش يحفظ الربط المشفّر. افتح اللوحة في نافذة عادية عبر HTTPS واسمح بتخزين بيانات الموقع."));
       }
     }
-    Object.assign(session, { token, head: sha, doc, records, source });
+    Object.assign(session, { token, head: sha, doc, records, source, saved: source });
     $("#connect").reset();
     $("#signin").hidden = true;
     $("#workspace").hidden = false;
@@ -726,8 +797,8 @@ function checkRecords() {
 }
 
 async function publish() {
-  if (session.busy || !validInputs()) return;
-  const changes = pendingChanges();
+  if (session.busy || !validInputs() || hasUnsavedChanges()) return;
+  const changes = pendingChanges(session.saved);
   if (!changes.length) return;
   try {
     checkRecords();
@@ -743,8 +814,8 @@ async function publish() {
     session.head = sha;
     const page = changes.find(({ path }) => path === Portfolio.paths.page);
     if (page) session.doc = parsePage(page.content);
-    session.source.pageDOM = session.doc.documentElement.outerHTML;
-    for (const kind of Object.keys(recordFields)) session.source[kind] = Portfolio.writeRecords(kind, session.records[kind]);
+    session.source = workingSnapshot();
+    session.saved = session.source;
     releaseUploads();
     render();
     notify(tr("تم حفظ التعديلات على GitHub (") + sha.slice(0, 7) + tr("). ظهورها على الموقع يعتمد على اكتمال تحديث GitHub Pages."));
@@ -787,7 +858,7 @@ $("#site-settings").addEventListener("click", () => selectSection("settings"));
 $("#disconnect").addEventListener("click", async () => {
   if (pendingChanges().length && !await ask(tr("الخروج من اللوحة"), tr("عندك تعديلات غير منشورة. هتتفقد بعد الخروج."), tr("خروج"))) return;
   releaseUploads();
-  Object.assign(session, { token: "", head: "", doc: null, source: null, records: {}, current: "", activeItem: null });
+  Object.assign(session, { token: "", head: "", doc: null, source: null, saved: null, records: {}, current: "", activeItem: null });
   editor.replaceChildren();
   $("#sections").replaceChildren();
   $("#workspace").hidden = true;
@@ -903,16 +974,14 @@ function renderCardCollection(config) {
   const title = element("h3");
   title.append(config.title, element("span", String(items.length), "count-badge"));
   header.append(title, button(config.addLabel, () => {
-    if (validInputs()) open(config.add(), true);
+    if (readyToLeave()) open(config.add(), true);
   }, "collection-add"));
   block.append(header);
 
   function open(record, focusEditor = false) {
     session.activeItem = record;
-    const next = renderCardCollection(config);
-    block.replaceWith(next);
-    updatePending();
-    if (focusEditor) next.querySelector(".project-edit-title")?.focus();
+    render();
+    if (focusEditor) editor.querySelector(".project-edit-title")?.focus();
   }
 
   if (activeIndex >= 0) {
@@ -922,11 +991,12 @@ function renderCardCollection(config) {
     const heading = element("h4", config.heading(record), "project-edit-title");
     heading.tabIndex = -1;
     heading.dir = "auto";
-    row.append(heading, button(config.backLabel, () => { if (validInputs()) open(null); }, "quiet"));
+    row.append(heading, button(config.backLabel, () => { if (readyToLeave()) open(null); }, "quiet"));
     panel.append(row);
     config.editFields(record, panel, () => { heading.textContent = config.heading(record); });
 
     const actions = element("div", "", "tools");
+    actions.append(saveButton());
     const shift = (delta) => {
       if (!validInputs()) return;
       config.move(items, activeIndex, delta);
@@ -945,7 +1015,7 @@ function renderCardCollection(config) {
   } else if (items.length) {
     const grid = element("div", "", "project-grid");
     grid.append(...items.map((record) => renderItemCard({ title: config.heading(record), ...config.info(record) }, () => {
-      if (validInputs()) open(record, true);
+      if (readyToLeave()) open(record, true);
     })));
     block.append(grid);
   } else {
