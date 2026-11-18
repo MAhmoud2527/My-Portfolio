@@ -5,6 +5,7 @@
   const certifications = Array.isArray(window.PORTFOLIO_CERTIFICATIONS) ? window.PORTFOLIO_CERTIFICATIONS : [];
   const grid = document.getElementById("project-grid");
   const projectsToggle = document.getElementById("projects-toggle");
+  const expandProjectsLabel = projectsToggle?.textContent.trim() || "View All Projects";
   const PROJECTS_INITIAL_LIMIT = 8;
   let currentProjectFilter = "all";
   let showAllProjects = false;
@@ -72,7 +73,7 @@
           : project.status === "in-progress"
           ? '<span class="project-status project-status-progress">In Progress</span>'
           : ""}
-          <img src="${escapeHtml(coverImage?.src || project.image || "")}" alt="${escapeHtml(coverImage?.alt || `Project image for ${project.title}`)}" loading="lazy" width="900" height="620">
+          ${coverImage ? `<img src="${escapeHtml(coverImage.src)}" alt="${escapeHtml(coverImage.alt)}" loading="lazy" width="900" height="620">` : ""}
         </div>
         <div class="project-body">
           <span class="project-role">${escapeHtml(project.role)}</span>
@@ -206,7 +207,7 @@
       projectsToggle.hidden = !hasMore;
       projectsToggle.textContent = showAllProjects
         ? "Show Fewer Projects"
-        : `View All Projects (${filteredProjects.length})`;
+        : `${expandProjectsLabel} (${filteredProjects.length})`;
     }
 
     grid.querySelectorAll(".project-open").forEach((button) => {
@@ -437,7 +438,8 @@
       message
     ].join("\n");
 
-    window.location.href = `mailto:M.Ahmed1518@Outlook.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    const recipient = contactForm.dataset.recipient || "M.Ahmed1518@Outlook.com";
+    window.location.href = `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   });
 
   const year = document.getElementById("current-year");

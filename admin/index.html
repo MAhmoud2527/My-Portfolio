@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="theme-color" content="#121527">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; font-src 'self'; connect-src https://api.github.com; img-src 'self' blob: https:; base-uri 'none'; form-action 'none'; object-src 'none'">
+  <title>إدارة البورتفوليو | محمود أحمد</title>
+  <link rel="icon" href="assets/mahmoud-logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="fonts.css">
+  <link rel="stylesheet" href="admin.css">
+  <script defer src="i18n.js"></script>
+  <script defer src="model.js"></script>
+  <script defer src="vault.js"></script>
+  <script defer src="admin.js"></script>
+</head>
+<body>
+  <header class="bar">
+    <div class="brand"><img src="assets/mahmoud-logo.svg" alt=""><div><strong>Mahmoud Ahmed</strong><small>Portfolio Management</small></div></div>
+    <div class="bar-actions">
+      <span id="draft" class="chip">آخر نسخة من GitHub</span>
+      <button id="disconnect" class="quiet" data-en="Sign out" hidden>خروج</button>
+      <a class="button quiet" href="../" target="_blank" rel="noopener" data-en="View site ↗">عرض الموقع ↗</a>
+      <button id="publish" data-en="Publish changes" class="primary" disabled hidden>نشر التعديلات</button>
+      <button class="quiet language-toggle" type="button" data-language>English</button>
+    </div>
+  </header>
+  <main>
+    <div id="notice" class="notice" role="status" aria-live="polite" hidden></div>
+    <section class="signin panel" id="signin">
+      <div class="signin-header"><div class="brand"><img src="assets/mahmoud-logo.svg" alt=""><div><strong>Mahmoud Ahmed</strong><small>Portfolio Management</small></div></div><button class="quiet language-toggle" type="button" data-language>English</button></div>
+      <h1 id="signin-title">إعداد الدخول لأول مرة</h1>
+      <p id="setup-intro" data-en="Enter a GitHub token for My-Portfolio with Contents read and write access and choose a dashboard password for this browser.">ادخل رمز GitHub لريبو My-Portfolio بصلاحية Contents: Read and write، واختار كلمة مرور للوحة على المتصفح ده.</p>
+      <p id="unlock-intro" data-en="Enter the dashboard password you chose for this browser." hidden>ادخل كلمة المرور اللي اخترتها للوحة على المتصفح ده.</p>
+      <form id="connect">
+        <label id="token-label" for="token" data-en="GitHub access token">رمز الوصول من GitHub</label>
+        <input id="token" type="password" placeholder="github_pat_…" autocomplete="off" maxlength="512" required dir="ltr">
+        <label id="password-label" for="password">كلمة مرور جديدة للوحة</label>
+        <input id="password" type="password" autocomplete="new-password" minlength="12" maxlength="256" required dir="auto">
+        <label id="confirm-label" for="confirm-password" data-en="Confirm password">تأكيد كلمة المرور</label>
+        <input id="confirm-password" type="password" autocomplete="new-password" minlength="12" maxlength="256" required dir="auto">
+        <button class="primary" id="connect-button">حفظ الربط وفتح اللوحة</button>
+      </form>
+      <div class="auth-bottom"><a id="create-token" href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener" data-en="Create a GitHub token ↗">إنشاء رمز وصول على GitHub ↗</a><button id="reset-vault" class="quiet" type="button" data-en="Reset sign-in" hidden>إعادة إعداد الدخول</button><a href="../" target="_blank" rel="noopener" data-en="View site ↗">عرض الموقع ↗</a></div>
+      <p class="hint" id="setup-hint" data-en="Use at least 12 characters. The token is encrypted in this browser, and your password stays with you.">استخدم ١٢ حرفًا على الأقل. الرمز هيتحفظ مشفّرًا في المتصفح، وكلمة المرور بتفضل معاك.</p>
+    </section>
+    <section id="workspace" hidden>
+      <div class="intro"><div><span class="eyebrow" lang="en">PORTFOLIO MANAGEMENT</span><h1 data-en="Site content">محتوى الموقع</h1><p data-en="Choose a section, edit its content, then review and publish your changes.">اختار قسمًا من القائمة وعدّل محتواه، ثم انشر لما تراجع تغييراتك.</p></div></div>
+      <div class="layout">
+        <aside class="panel sidebar"><h2 data-en="Page sections">أقسام الصفحة</h2><div id="sections"></div><button class="add" id="add-section" data-en="＋ Add section">＋ إضافة قسم</button><div class="settings"><button id="site-settings" class="section-button" data-en="Site settings">إعدادات الموقع</button></div></aside>
+        <section class="panel editor" id="editor" aria-label="تعديل المحتوى"></section>
+      </div>
+    </section>
+  </main>
+  <dialog id="dialog">
+    <form method="dialog">
+      <h2 id="dialog-title"></h2>
+      <div id="dialog-content"></div>
+      <div class="dialog-actions"><button value="cancel" class="quiet" data-en="Cancel" autofocus>إلغاء</button><button id="dialog-ok" value="accept" class="primary">تأكيد</button></div>
+    </form>
+  </dialog>
+</body>
+</html>

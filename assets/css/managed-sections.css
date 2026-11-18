@@ -1,0 +1,4 @@
+.managed-section .section-copy { max-width: 1000px; }
+.managed-section .custom-body { white-space: pre-wrap; }
+.managed-section .custom-image { display: block; max-width: 100%; max-height: 540px; width: auto; height: auto; border-radius: .75rem; margin: 1.25rem 0; }
+.managed-section [hidden], main a[hidden] { display: none !important; }
