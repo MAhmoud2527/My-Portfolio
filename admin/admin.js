@@ -214,6 +214,7 @@ function patchPage() {
     const a = oldLink || element("a");
     a.href = "#" + section.id;
     a.textContent = section.dataset.navLabel || oldLink?.textContent || section.querySelector("h2")?.textContent || (kind === "hero" ? "Home" : Portfolio.sectionNames[kind]);
+    if (section.dataset.navLabelAr) a.dataset.arContent = section.dataset.navLabelAr;
     nav.append(a);
   }
   const ids = new Set(currentSections.map((section) => section.id));
@@ -457,10 +458,24 @@ function markupFields(container, root, definitions, afterChange = () => {}) {
   for (const descriptor of definitions) {
     const node = nodeAt(root, descriptor.selector);
     if (!node) continue;
-    group.append(renderField(descriptor, () => getElementValue(node, descriptor), (value) => {
+    const translated = descriptor.attr === "content" || (!descriptor.attr && ["text", "long", "list", "leading", "trailing"].includes(descriptor.type));
+    const primary = translated ? { ...descriptor, label: tr(descriptor.label) + tr(" · بالإنجليزي") } : descriptor;
+    group.append(renderField(primary, () => getElementValue(node, descriptor), (value) => {
       setElementValue(node, descriptor, value);
       afterChange(descriptor, node);
     }));
+    if (translated) {
+      const arabicField = { ...descriptor, label: tr(descriptor.label) + tr(" · بالعربي") };
+      group.append(renderField(arabicField, () => node.dataset.arContent || "", (value) => {
+        if (value.trim()) {
+          node.dataset.arContent = value;
+          node.dataset.arMode = descriptor.attr || descriptor.type;
+        } else {
+          delete node.dataset.arContent;
+          delete node.dataset.arMode;
+        }
+      }));
+    }
   }
   container.append(group);
   return group;
@@ -556,27 +571,105 @@ function navOptions(section, title) {
   enabled.type = "checkbox";
   enabled.setAttribute("role", "switch");
   enabled.checked = section.dataset.nav !== "false" && (section.dataset.nav === "true" || Boolean(old));
-  const nameField = renderField(field("nav", tr("اسم القسم في قائمة التنقل")), () => section.dataset.navLabel || old?.textContent || (kindOf(section) === "hero" ? "Home" : nameOf(section)), (value) => {
+  const names = element("div", "", "fields section-nav-labels");
+  const labelText = tr("اسم القسم في قائمة التنقل");
+  names.append(renderField(field("nav", labelText + tr(" · بالإنجليزي")), () => section.dataset.navLabel || old?.textContent || (kindOf(section) === "hero" ? "Home" : nameOf(section)), (value) => {
     section.dataset.navLabel = value.trim();
     renderSidebar();
-  });
-  nameField.hidden = !enabled.checked;
+  }));
+  names.append(renderField(field("nav-ar", labelText + tr(" · بالعربي")), () => section.dataset.navLabelAr || old?.dataset.arContent || "", (value) => {
+    if (value.trim()) section.dataset.navLabelAr = value.trim();
+    else {
+      delete section.dataset.navLabelAr;
+      if (old) delete old.dataset.arContent;
+    }
+  }));
+  names.hidden = !enabled.checked;
   enabled.addEventListener("change", () => {
     if (enabled.checked && !section.id) section.id = "hero";
     section.dataset.nav = String(enabled.checked);
-    nameField.hidden = !enabled.checked;
+    names.hidden = !enabled.checked;
     updatePending();
   });
   const label = element("label", "", "visibility-toggle");
   label.append(enabled, element("span", "", "switch-track"), element("span", tr("إظهار في قائمة التنقل")));
   title.append(label);
-  return nameField;
+  return names;
+}
+
+function renderThemeSettings() {
+  const themes = [
+    { id: "original", label: tr("الأساسي · أخضر") },
+    { id: "teal", label: tr("كحلي وتركوازي") },
+    { id: "amber", label: tr("فحمي ونحاسي") },
+    { id: "cobalt", label: tr("كحلي وأزرق") }
+  ];
+  const current = session.doc.documentElement.dataset.theme;
+  const configured = themes.some(({ id }) => id === current) ? current : "original";
+  const group = element("fieldset", "", "theme-settings");
+  group.append(element("legend", tr("ألوان الموقع")));
+  group.append(element("p", tr("اختار ألوان العرض. التصميم والصور وترتيب الأقسام زي ما هم."), "hint"));
+  const choices = element("div", "", "theme-choices");
+  const preview = element("a", tr("معاينة الألوان ↗"), "button quiet theme-preview");
+  preview.target = "_blank";
+  preview.rel = "noopener";
+  const previewUrl = new URL("../", location.href);
+
+  function updatePreview(id) {
+    previewUrl.searchParams.set("preview-theme", id);
+    previewUrl.searchParams.set("lang", session.doc.documentElement.dataset.siteLanguage === "ar" ? "ar" : "en");
+    preview.href = previewUrl.href;
+  }
+
+  for (const { id, label } of themes) {
+    const option = element("label", "", "theme-choice theme-choice-" + id);
+    const input = element("input");
+    input.type = "radio";
+    input.name = "site-theme";
+    input.value = id;
+    input.checked = id === configured;
+    const palette = element("span", "", "theme-swatches");
+    palette.setAttribute("aria-hidden", "true");
+    palette.append(element("i"), element("i"), element("i"));
+    input.addEventListener("change", () => {
+      if (id === "original") delete session.doc.documentElement.dataset.theme;
+      else session.doc.documentElement.dataset.theme = id;
+      updatePreview(id);
+      updatePending();
+    });
+    const body = element("span", "", "theme-choice-body");
+    body.append(palette, element("strong", label));
+    option.append(input, body);
+    choices.append(option);
+  }
+  updatePreview(configured);
+  group.append(choices, preview);
+  return group;
+}
+
+function renderDefaultLanguage() {
+  const root = session.doc.documentElement;
+  const container = element("div", "", "default-language");
+  container.append(renderField(field("site-language", tr("لغة الموقع الافتراضية"), "select", [
+    ["en", "English"], ["ar", "العربية"]
+  ]), () => root.dataset.siteLanguage === "ar" ? "ar" : "en", (value) => {
+    if (value === "en") delete root.dataset.siteLanguage;
+    else root.dataset.siteLanguage = value;
+    const preview = editor.querySelector(".theme-preview");
+    if (preview) {
+      const url = new URL(preview.href);
+      url.searchParams.set("lang", value);
+      preview.href = url.href;
+    }
+  }));
+  container.append(element("p", tr("بتتطبق على الرابط الرئيسي، والزائر يقدر يبدّل اللغة من الموقع."), "hint"));
+  return container;
 }
 
 function renderSettings() {
   const header = element("div", "", "editor-head");
   header.append(element("h2", tr("إعدادات الموقع")), saveButton());
-  editor.append(header);
+  editor.append(header, renderDefaultLanguage(), renderThemeSettings());
   const order = element("div", "", "section-order");
   const orderItems = element("div", "", "section-order-items");
   const list = sections();
@@ -617,7 +710,17 @@ function renderSettings() {
   const last = footer?.lastChild;
   const group = element("div", "", "fields");
   if (last?.nodeType === Node.TEXT_NODE) {
-    group.append(renderField(field("footer", tr("نص الحقوق في التذييل")), () => last.textContent.trim(), (value) => { last.textContent = " " + value; }));
+    const title = tr("نص الحقوق في التذييل");
+    group.append(renderField(field("footer", title + tr(" · بالإنجليزي")), () => last.textContent.trim(), (value) => { last.textContent = " " + value; }));
+    group.append(renderField(field("footer-ar", title + tr(" · بالعربي")), () => footer.dataset.arContent || "", (value) => {
+      if (value.trim()) {
+        footer.dataset.arContent = value;
+        footer.dataset.arMode = "trailing";
+      } else {
+        delete footer.dataset.arContent;
+        delete footer.dataset.arMode;
+      }
+    }));
   }
   editor.append(group);
 }
@@ -767,7 +870,7 @@ async function connect(event) {
     $("#connect").reset();
     $("#signin").hidden = true;
     $("#workspace").hidden = false;
-    $("#disconnect").hidden = false;
+    $("#account-menu").hidden = false;
     $("#publish").hidden = false;
     selectSection(sections()[0]?.id || (sections().length ? "hero" : "settings"), true);
     updatePending();
@@ -835,6 +938,7 @@ for (const toggle of document.querySelectorAll("[data-language]")) {
   toggle.addEventListener("click", () => {
     if (session.doc && !validInputs()) return;
     setLanguage(language === "ar" ? "en" : "ar");
+    $("#account-menu").open = false;
     notify();
     renderLanguage();
   });
@@ -864,7 +968,8 @@ $("#disconnect").addEventListener("click", async () => {
   $("#workspace").hidden = true;
   $("#signin").hidden = false;
   $("#publish").hidden = true;
-  $("#disconnect").hidden = true;
+  $("#account-menu").open = false;
+  $("#account-menu").hidden = true;
   notify();
   configureSignIn();
   $(DashboardVault.read() ? "#password" : "#token").focus();
@@ -918,7 +1023,9 @@ function renderRecordFields(kind, record, parent, onChange) {
   const group = element("div", "", "fields");
   for (const descriptor of recordFields[kind]) {
     const { key, type } = descriptor;
-    group.append(renderField(descriptor, () => {
+    const translated = ["text", "long", "lines"].includes(type) && key !== "year";
+    const primary = translated ? { ...descriptor, label: tr(descriptor.label) + tr(" · بالإنجليزي") } : descriptor;
+    group.append(renderField(primary, () => {
       if (type === "gallery") return projectImages(record);
       if (type === "lines") return (record[key] || []).join("\n");
       return record[key] || "";
@@ -927,6 +1034,18 @@ function renderRecordFields(kind, record, parent, onChange) {
       record[key] = type === "lines" ? value.split("\n").map((line) => line.trim()).filter(Boolean) : value;
       onChange(key);
     }));
+    if (translated) {
+      const arabicField = { ...descriptor, label: tr(descriptor.label) + tr(" · بالعربي") };
+      group.append(renderField(arabicField, () => type === "lines" ? (record.ar?.[key] || []).join("\n") : record.ar?.[key] || "", (value) => {
+        if (value.trim()) {
+          record.ar ??= {};
+          record.ar[key] = type === "lines" ? value.split("\n").map((line) => line.trim()).filter(Boolean) : value;
+        } else if (record.ar) {
+          delete record.ar[key];
+          if (!Object.keys(record.ar).length) delete record.ar;
+        }
+      }));
+    }
   }
   parent.append(group);
 }

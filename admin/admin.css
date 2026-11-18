@@ -97,10 +97,29 @@ input[type=file] { font-size: 11px; }
 .single-image-preview img { display: block; width: min(220px, 100%); height: auto; max-height: 280px; object-fit: contain; }
 .single-image-preview .media-tile { max-width: 100%; }
 .section-order { display: grid; gap: 10px; margin-block-end: 18px; padding-block-end: 16px; border-bottom: 1px solid var(--line); }
+.theme-settings { min-inline-size: 0; margin: 0 0 20px; padding: 10px 14px 14px; border: 1px solid var(--line); border-radius: 9px; }
+.default-language { max-width: 430px; margin-block-end: 16px; }
+.default-language .hint { margin-block-start: 5px; }
+.theme-settings legend { font-size: 14px; font-weight: 750; padding-inline: 6px; }
+.theme-choices { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(135px, 100%), 1fr)); gap: 9px; margin-block: 12px; }
+.theme-choice { position: relative; cursor: pointer; }
+.theme-choice input { position: absolute; inline-size: 1px; block-size: 1px; margin: 0; padding: 0; opacity: 0; }
+.theme-choice-body { display: grid; position: relative; gap: 7px; height: 100%; padding: 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--nav); }
+.theme-choice input:checked + .theme-choice-body { border-color: var(--accent); background: var(--active); }
+.theme-choice input:checked + .theme-choice-body::after { content: "✓"; display: grid; place-items: center; position: absolute; inset-block-start: 9px; inset-inline-end: 9px; inline-size: 19px; block-size: 19px; border-radius: 5px; background: var(--accent); color: #102325; font-size: 13px; font-weight: 900; }
+.theme-choice input:focus-visible + .theme-choice-body { outline: 2px solid var(--accent); outline-offset: 2px; }
+.theme-swatches { display: flex; align-items: center; gap: 4px; padding-inline-end: 24px; }
+.theme-swatches i { inline-size: 17px; block-size: 17px; border: 1px solid rgb(255 255 255 / .23); border-radius: 50%; background: var(--swatch-dark); }
+.theme-swatches i:nth-child(2) { background: var(--swatch-accent); }
+.theme-swatches i:nth-child(3) { background: var(--swatch-light); }
+.theme-choice-original { --swatch-dark: #0b1118; --swatch-accent: #91d400; --swatch-light: #f4f7f9; }
+.theme-choice-teal { --swatch-dark: #0a1923; --swatch-accent: #36debc; --swatch-light: #f2f8f8; }
+.theme-choice-amber { --swatch-dark: #1b1817; --swatch-accent: #e7aa68; --swatch-light: #faf5ef; }
+.theme-choice-cobalt { --swatch-dark: #0e172b; --swatch-accent: #78b4ff; --swatch-light: #f2f6fc; }
 .section-order-items { display: grid; gap: 8px; }
 .section-order-row { padding: 9px 12px; border: 1px solid var(--line); border-radius: 8px; background: var(--nav); }
 .section-order-row .collection-head { margin: 0; }
-.section-order-row .field { margin-block-start: 8px; max-width: 400px; }
+.section-order-row .section-nav-labels { margin-block: 8px 0; }
 .section-order-row .tools { margin-inline-start: auto; }
 .publish-ready { outline: 2px solid #ffcf6c; outline-offset: 2px; animation: publish-pulse 1.7s ease-out infinite; }
 @keyframes publish-pulse {
@@ -120,6 +139,14 @@ input[type=file] { font-size: 11px; }
 .photo-order { position: absolute; inset-block-start: 11px; inset-inline-start: 11px; padding: 0 7px; border-radius: 20px; background: #151a2ef0; color: var(--text); font-size: 11px; pointer-events: none; }
 .signin-header { display: flex; justify-content: space-between; align-items: start; gap: 10px; }
 .language-toggle { white-space: nowrap; }
+.account-menu { position: relative; }
+.account-menu summary { display: flex; align-items: center; gap: 8px; cursor: pointer; min-height: 36px; padding: 4px 9px; border: 1px solid var(--line); border-radius: 8px; background: var(--nav); list-style: none; }
+.account-menu summary::-webkit-details-marker { display: none; }
+.account-menu summary::after { content: "⌄"; padding-inline: 3px; color: var(--muted); }
+.account-menu img { width: 25px; height: 25px; object-fit: cover; border-radius: 50%; }
+.account-options { z-index: 20; position: absolute; inset-inline-end: 0; inset-block-start: calc(100% + 5px); display: grid; gap: 6px; min-width: 155px; padding: 8px; border: 1px solid var(--line); border-radius: 8px; background: var(--panel); }
+.account-options button { justify-content: flex-start; }
+.account-options small { padding-inline: 7px; }
 .collection { border-top: 1px solid var(--line); padding-top: 13px; margin-top: 16px; }
 .collection-head { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
 .collection-head h3 { display: flex; align-items: center; gap: 8px; }

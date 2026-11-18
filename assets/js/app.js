@@ -1,8 +1,21 @@
 (() => {
   "use strict";
 
-  const projects = Array.isArray(window.PORTFOLIO_PROJECTS) ? window.PORTFOLIO_PROJECTS : [];
-  const certifications = Array.isArray(window.PORTFOLIO_CERTIFICATIONS) ? window.PORTFOLIO_CERTIFICATIONS : [];
+  const themePreview = new URLSearchParams(window.location.search).get("preview-theme");
+  const root = document.documentElement;
+  if (themePreview === "original") delete root.dataset.theme;
+  if (["teal", "amber", "cobalt"].includes(themePreview)) root.dataset.theme = themePreview;
+  if (["teal", "amber", "cobalt"].includes(root.dataset.theme)) {
+    const themeColor = document.querySelector('meta[name="theme-color"]');
+    if (themeColor) themeColor.content = getComputedStyle(root).getPropertyValue("--bg").trim();
+  }
+
+  const localize = (records, fields) => Array.isArray(records)
+    ? records.map((record) => SiteLanguage.localize(record, fields))
+    : [];
+  const label = SiteLanguage.text;
+  const projects = localize(window.PORTFOLIO_PROJECTS, ["title", "location", "role", "subtitle", "systems", "scope", "responsibilities"]);
+  const certifications = localize(window.PORTFOLIO_CERTIFICATIONS, ["title", "fullTitle", "issuer"]);
   const grid = document.getElementById("project-grid");
   const projectsToggle = document.getElementById("projects-toggle");
   const expandProjectsLabel = projectsToggle?.textContent.trim() || "View All Projects";
@@ -49,13 +62,13 @@
         if (typeof item === "string") {
           return {
             src: item,
-            alt: `${project.title} - Project photo ${index + 1}`
+            alt: `${project.title} - ${label("Project photo")} ${index + 1}`
           };
         }
 
         return {
           src: item?.src || "",
-          alt: item?.alt || `${project.title} - Project photo ${index + 1}`
+          alt: item?.alt || `${project.title} - ${label("Project photo")} ${index + 1}`
         };
       })
       .filter((item) => item.src);
@@ -69,9 +82,9 @@
       <article class="project-card reveal" data-category="${escapeHtml(project.category)}">
         <div class="project-image">
         ${project.status === "completed"
-          ? '<span class="project-status project-status-completed">Completed</span>'
+          ? `<span class="project-status project-status-completed">${label("Completed")}</span>`
           : project.status === "in-progress"
-          ? '<span class="project-status project-status-progress">In Progress</span>'
+          ? `<span class="project-status project-status-progress">${label("In Progress")}</span>`
           : ""}
           ${coverImage ? `<img src="${escapeHtml(coverImage.src)}" alt="${escapeHtml(coverImage.alt)}" loading="lazy" width="900" height="620">` : ""}
         </div>
@@ -83,7 +96,7 @@
             ${visibleTags.map((tag) => `<span class="project-tag">${escapeHtml(tag)}</span>`).join("")}
           </div>
           <button class="project-open" type="button" data-project-id="${escapeHtml(project.id)}">
-            View project <span aria-hidden="true">&rarr;</span>
+            ${label("View project")} <span aria-hidden="true">&rarr;</span>
           </button>
         </div>
       </article>
@@ -92,14 +105,14 @@
 
   function certificationCard(certification) {
     return `
-      <button class="cert-card" type="button" data-certificate-id="${escapeHtml(certification.id)}" aria-label="View ${escapeHtml(certification.fullTitle)} certificate">
+      <button class="cert-card" type="button" data-certificate-id="${escapeHtml(certification.id)}" aria-label="${label("View certificate")}: ${escapeHtml(certification.fullTitle)}">
         <span class="cert-logo-wrap">
           <img src="${escapeHtml(certification.logo)}" alt="${escapeHtml(certification.issuer)} logo" loading="lazy" width="180" height="70">
         </span>
         <h3>${escapeHtml(certification.title)}</h3>
         <p>${escapeHtml(certification.fullTitle)}</p>
         <time datetime="${escapeHtml(certification.year)}">${escapeHtml(certification.year)}</time>
-        <span class="cert-card-hint">View certificate</span>
+        <span class="cert-card-hint">${label("View certificate")}</span>
       </button>
     `;
   }
@@ -188,12 +201,12 @@
       const content = [];
 
       if (pmProjects.length) {
-        content.push(groupHeading("Project Manager Projects", projects.filter((project) => project.category === "pm").length));
+        content.push(groupHeading(label("Project Manager Projects"), projects.filter((project) => project.category === "pm").length));
         content.push(...pmProjects.map(projectCard));
       }
 
       if (siteProjects.length) {
-        content.push(groupHeading("Site Engineer Projects", projects.filter((project) => project.category === "site").length));
+        content.push(groupHeading(label("Site Engineer Projects"), projects.filter((project) => project.category === "site").length));
         content.push(...siteProjects.map(projectCard));
       }
 
@@ -206,7 +219,7 @@
       const hasMore = filteredProjects.length > PROJECTS_INITIAL_LIMIT;
       projectsToggle.hidden = !hasMore;
       projectsToggle.textContent = showAllProjects
-        ? "Show Fewer Projects"
+        ? label("Show Fewer Projects")
         : `${expandProjectsLabel} (${filteredProjects.length})`;
     }
 
@@ -267,7 +280,7 @@
           class="modal-thumbnail${index === 0 ? " active" : ""}"
           type="button"
           data-image-index="${index}"
-          aria-label="View project image ${index + 1}"
+          aria-label="${label("View project image")} ${index + 1}"
           aria-current="${index === 0 ? "true" : "false"}"
         >
           <img src="${escapeHtml(image.src)}" alt="" loading="lazy">
@@ -428,12 +441,12 @@
     const formData = new FormData(contactForm);
     const name = String(formData.get("name") || "").trim();
     const email = String(formData.get("email") || "").trim();
-    const subject = String(formData.get("subject") || "Portfolio inquiry").trim();
+    const subject = String(formData.get("subject") || label("Portfolio inquiry")).trim();
     const message = String(formData.get("message") || "").trim();
 
     const body = [
-      `Name: ${name}`,
-      `Email: ${email}`,
+      `${label("Name")}: ${name}`,
+      `${label("Email")}: ${email}`,
       "",
       message
     ].join("\n");
@@ -471,6 +484,8 @@
   ) return;
 
   try {
+    const palette = getComputedStyle(document.documentElement);
+    const color = (property) => Number.parseInt(palette.getPropertyValue(property).trim().slice(1), 16);
     window.heroNetEffect = VANTA.NET({
       el: background,
       THREE: window.THREE,
@@ -481,8 +496,8 @@
       minWidth: 200,
       scale: 1,
       scaleMobile: 1,
-      color: 0x91d400,
-      backgroundColor: 0x0b1118,
+      color: color("--accent"),
+      backgroundColor: color("--bg"),
       points: 6,
       maxDistance: 18,
       spacing: 22,

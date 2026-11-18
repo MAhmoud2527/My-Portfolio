@@ -1,6 +1,17 @@
 "use strict";
 
 const englishLabels = {
+  "لغة الموقع الافتراضية": "Default site language",
+  "بتتطبق على الرابط الرئيسي، والزائر يقدر يبدّل اللغة من الموقع.": "Applies to the main URL. Visitors can switch languages on the site.",
+  " · بالعربي": " · Arabic",
+  " · بالإنجليزي": " · English",
+  "ألوان الموقع": "Site colors",
+  "الأساسي · أخضر": "Original · green",
+  "كحلي وتركوازي": "Navy and teal",
+  "فحمي ونحاسي": "Charcoal and copper",
+  "كحلي وأزرق": "Navy and blue",
+  "اختار ألوان العرض. التصميم والصور وترتيب الأقسام زي ما هم.": "Choose the display colors. Layout, images, and section order stay the same.",
+  "معاينة الألوان ↗": "Preview colors ↗",
   "ترتيب الأقسام وقائمة التنقل": "Section order and navigation",
   "حفظ التعديلات": "Save changes",
   "احفظ تعديلات الجزء الحالي قبل الانتقال.": "Save changes in the current editor before leaving.",
