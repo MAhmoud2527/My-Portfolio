@@ -120,7 +120,13 @@ input[type=file] { font-size: 11px; }
 .section-order-row { padding: 9px 12px; border: 1px solid var(--line); border-radius: 8px; background: var(--nav); }
 .section-order-row .collection-head { margin: 0; }
 .section-order-row .section-nav-labels { margin-block: 8px 0; }
-.section-order-row .tools { margin-inline-start: auto; }
+.section-order-row .section-drag-handle { flex: 1; justify-content: flex-start; min-width: 0; min-height: 34px; padding: 2px 0; border-color: transparent; cursor: grab; touch-action: none; user-select: none; }
+.section-drag-handle:hover { color: var(--accent); }
+.section-drag-grip { color: var(--muted); font-size: 18px; line-height: 1; }
+.section-order-row.is-dragging { opacity: .5; }
+.section-order-row.is-dragging .section-drag-handle { cursor: grabbing; }
+.section-order-row.drag-before { box-shadow: 0 -3px 0 var(--accent); }
+.section-order-row.drag-after { box-shadow: 0 3px 0 var(--accent); }
 .publish-ready { outline: 2px solid #ffcf6c; outline-offset: 2px; animation: publish-pulse 1.7s ease-out infinite; }
 @keyframes publish-pulse {
   0%, 100% { box-shadow: 0 0 0 0 rgb(255 195 85 / 0); }
@@ -142,8 +148,9 @@ input[type=file] { font-size: 11px; }
 .account-menu { position: relative; }
 .account-menu summary { display: flex; align-items: center; gap: 8px; cursor: pointer; min-height: 36px; padding: 4px 9px; border: 1px solid var(--line); border-radius: 8px; background: var(--nav); list-style: none; }
 .account-menu summary::-webkit-details-marker { display: none; }
-.account-menu summary::after { content: "⌄"; padding-inline: 3px; color: var(--muted); }
-.account-menu img { width: 25px; height: 25px; object-fit: cover; border-radius: 50%; }
+.account-menu summary::after { content: ""; flex: none; width: 7px; height: 7px; margin-inline: 4px; border: solid var(--muted); border-width: 0 1.5px 1.5px 0; transform: translateY(-2px) rotate(45deg); }
+.account-menu[open] summary::after { transform: translateY(2px) rotate(-135deg); }
+.account-menu img { flex: none; width: 32px; height: 32px; object-fit: cover; object-position: center 26%; border-radius: 50%; border: 1px solid var(--line); }
 .account-options { z-index: 20; position: absolute; inset-inline-end: 0; inset-block-start: calc(100% + 5px); display: grid; gap: 6px; min-width: 155px; padding: 8px; border: 1px solid var(--line); border-radius: 8px; background: var(--panel); }
 .account-options button { justify-content: flex-start; }
 .account-options small { padding-inline: 7px; }

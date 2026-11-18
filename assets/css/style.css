@@ -2074,6 +2074,8 @@ a {
 .nav-social .site-language-menu a, .primary-nav .site-language-menu a { display: flex; gap: 7px; align-items: center; width: auto; height: auto; padding: 7px 8px; border: 0; border-radius: 5px; color: var(--text-on-dark); white-space: nowrap; }
 .site-language-menu a[aria-current="true"], .site-language-menu a:hover { background: var(--bg-3); }
 .primary-nav .site-language-narrow { display: none; }
+.hero-actions a[hidden] { display: none; }
+.cv-file-language { font-size: .82em; font-weight: 650; }
 [dir="rtl"] body { font-family: Cairo, Inter, "Segoe UI", sans-serif; }
 [dir="rtl"] .hero-copy, [dir="rtl"] .section-copy, [dir="rtl"] .project-body { text-align: start; min-inline-size: 0; }
 [dir="rtl"] :is(h1, h2, h3, .eyebrow, .section-kicker, .experience-date) { letter-spacing: normal; }
@@ -2082,9 +2084,15 @@ a {
 [dir="rtl"] :is(.contact-panel, .contact-list) a[href^="tel:"] span:not(.panel-icon),
 [dir="rtl"] :is(.contact-panel, .contact-list) a[href^="mailto:"] span:not(.panel-icon) { direction: ltr; unicode-bidi: isolate; text-align: right; }
 [dir="rtl"] .scroll-cue { left: auto; right: max(20px, calc((100% - var(--container)) / 2)); }
-[dir="rtl"] .about-portrait img { right: auto; left: 0; transform: translateX(20px); }
-[dir="rtl"] .about-portrait img:hover { transform: translate(-8px, -8px); }
-[dir="rtl"] .dot-field { right: auto; left: 4px; }
+[dir="rtl"] #about .section-copy h2 { font-size: clamp(2rem, 3.2vw, 3.15rem); line-height: 1.22; }
+[dir="rtl"] #about .section-copy p:not(.section-kicker) { line-height: 1.75; }
+[dir="rtl"] #about .metric-card strong { direction: ltr; unicode-bidi: isolate; text-align: right; }
+[dir="rtl"] #about .text-link span { transform: scaleX(-1); }
+[dir="rtl"] #about .text-link:hover span { transform: translateX(-4px) scaleX(-1); }
+[dir="rtl"] .about-portrait { min-height: 0; align-self: center; }
+[dir="rtl"] .about-portrait img { position: relative; inset: auto; width: 100%; height: auto; max-height: 560px; object-fit: contain; object-position: center; transform: none; }
+[dir="rtl"] .about-portrait img:hover { transform: translateY(-4px); }
+[dir="rtl"] .dot-field { top: 12%; right: auto; left: 4px; }
 [dir="rtl"] .expertise-card { border-right: 0; border-inline-end: 1px solid var(--line-dark); }
 [dir="rtl"] .expertise-card:last-child { border-inline-end: 0; }
 [dir="rtl"] .experience-entry::before, [dir="rtl"] .experience-entry::after { left: auto; }

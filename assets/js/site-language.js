@@ -223,6 +223,24 @@ const SiteLanguage = (() => {
       document.querySelectorAll("[" + attr + "]").forEach((node) => node.setAttribute(attr, text(node.getAttribute(attr))));
     }
   }
+  const cv = document.querySelector(".hero-actions a[download]");
+  if (cv) {
+    const files = { ar: cv.dataset.cvAr, en: cv.getAttribute("href") };
+    const alternate = language === "ar" ? "en" : "ar";
+    const fileLanguage = files[language] ? language : alternate;
+    const path = files[fileLanguage];
+    cv.hidden = !path;
+    if (path) {
+      cv.setAttribute("href", path);
+      if (fileLanguage === "ar") cv.download = "Mahmoud_Ahmed_CV_AR.pdf";
+      if (fileLanguage !== language) {
+        const note = document.createElement("span");
+        note.className = "cv-file-language";
+        note.textContent = fileLanguage === "en" ? "(الإنجليزية)" : "(Arabic)";
+        cv.append(note);
+      }
+    }
+  }
   const languages = { ar: { flag: "sa", name: "العربية" }, en: { flag: "gb", name: "English" } };
   function languageIcon(code) {
     const flag = document.createElement("img");

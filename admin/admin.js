@@ -11,7 +11,9 @@ const sectionFields = {
   hero: [
     markup(".eyebrow", "العنوان التمهيدي"), markup("#hero-title span", "الاسم المعروض"),
     markup(".hero-role", "المسمى الوظيفي"), text(".hero-intro", "النص التعريفي"),
-    image(".portrait-shell img", "الصورة الرئيسية"), markup(".hero-actions a[download]", "ملف السيرة الذاتية PDF", "pdf", "href"),
+    image(".portrait-shell img", "الصورة الرئيسية"),
+    markup(".hero-actions a[download]", "السيرة الذاتية بالإنجليزي · PDF", "pdf", "href"),
+    markup(".hero-actions a[download]", "السيرة الذاتية بالعربي · PDF", "pdf", "data-cv-ar"),
     markup(".hero-actions a[download]", "نص زر تنزيل السيرة الذاتية", "trailing"),
     markup(".hero-actions .button-ghost", "نص زر المشاريع"), link(".hero-actions .button-ghost", "رابط زر المشاريع")
   ],
@@ -154,7 +156,8 @@ function setElementValue(node, descriptor, value) {
     if (value) node.setAttribute(descriptor.attr, value);
     else node.removeAttribute(descriptor.attr);
     if (node.classList.contains("custom-image") || node.classList.contains("custom-link")) node.hidden = !value;
-    if (descriptor.type === "image" || descriptor.type === "pdf") node.hidden = !value;
+    if (descriptor.type === "pdf") node.hidden = !node.getAttribute("href") && !node.dataset.cvAr;
+    if (descriptor.type === "image") node.hidden = !value;
     return;
   }
   if (descriptor.type === "list") {
@@ -666,35 +669,106 @@ function renderDefaultLanguage() {
   return container;
 }
 
-function renderSettings() {
-  const header = element("div", "", "editor-head");
-  header.append(element("h2", tr("إعدادات الموقع")), saveButton());
-  editor.append(header, renderDefaultLanguage(), renderThemeSettings());
+function renderSectionOrder() {
   const order = element("div", "", "section-order");
   const orderItems = element("div", "", "section-order-items");
   const list = sections();
-  order.append(element("h3", tr("ترتيب الأقسام وقائمة التنقل")), orderItems);
+  order.append(element("h3", tr("ترتيب الأقسام وقائمة التنقل")), element("p", tr("اسحب القسم من عنوانه لتغيير مكانه، أو استخدم سهمي أعلى وأسفل من لوحة المفاتيح."), "hint"), orderItems);
+  const rows = [];
+  let drag = null;
+
+  function refresh(section) {
+    render();
+    editor.querySelectorAll(".section-drag-handle")[sections().indexOf(section)]?.focus({ preventScroll: true });
+  }
+
+  function pointDrop() {
+    if (!drag) return;
+    drag.row.classList.remove("drag-before", "drag-after");
+    const row = document.elementFromPoint(drag.x, drag.y)?.closest(".section-order-row");
+    if (drag.target) drag.target.classList.remove("drag-before", "drag-after");
+    drag.target = row && row !== drag.row && orderItems.contains(row) ? row : null;
+    if (!drag.target) return;
+    const bounds = row.getBoundingClientRect();
+    drag.after = drag.y >= bounds.top + bounds.height / 2;
+    row.classList.add(drag.after ? "drag-after" : "drag-before");
+  }
+
+  function scrollWhileDragging() {
+    if (!drag?.moving) return;
+    const edge = 76;
+    const step = drag.y > window.innerHeight - edge ? 12 : drag.y < edge ? -12 : 0;
+    if (step) window.scrollBy({ top: step, behavior: "instant" });
+    pointDrop();
+    drag.frame = requestAnimationFrame(scrollWhileDragging);
+  }
+
+  function stopDrag(apply) {
+    if (!drag) return;
+    const { row, frame, target, after, section } = drag;
+    drag = null;
+    cancelAnimationFrame(frame);
+    row.classList.remove("is-dragging");
+    target?.classList.remove("drag-before", "drag-after");
+    if (!apply || !target || !validInputs()) return;
+    const targetSection = list[rows.indexOf(target)];
+    if (after) targetSection.after(section);
+    else targetSection.before(section);
+    refresh(section);
+  }
+
   list.forEach((section, index) => {
     const row = element("div", "", "section-order-row");
-    const label = element("strong", nameOf(section));
+    rows.push(row);
     const top = element("div", "", "collection-head");
-    const actions = element("div", "", "tools");
-    const shift = (delta) => {
-      if (!validInputs()) return;
+    const handle = button(nameOf(section), () => {}, "quiet section-drag-handle");
+    const grip = element("span", "⠿", "section-drag-grip");
+    grip.setAttribute("aria-hidden", "true");
+    handle.prepend(grip);
+    handle.setAttribute("aria-label", tr("اسحب لترتيب القسم") + " · " + nameOf(section));
+    handle.addEventListener("pointerdown", (event) => {
+      if (event.button !== 0) return;
+      drag = { id: event.pointerId, row, section, x: event.clientX, y: event.clientY, startY: event.clientY };
+      handle.setPointerCapture(event.pointerId);
+    });
+    handle.addEventListener("pointermove", (event) => {
+      if (drag?.id !== event.pointerId) return;
+      drag.x = event.clientX;
+      drag.y = event.clientY;
+      if (drag.moving || Math.abs(drag.y - drag.startY) < 5) return;
+      drag.moving = true;
+      row.classList.add("is-dragging");
+      scrollWhileDragging();
+    });
+    handle.addEventListener("pointerup", (event) => {
+      if (drag?.id !== event.pointerId) return;
+      if (drag.moving) {
+        drag.x = event.clientX;
+        drag.y = event.clientY;
+        pointDrop();
+      }
+      stopDrag(drag.moving);
+    });
+    handle.addEventListener("lostpointercapture", () => stopDrag(false));
+    handle.addEventListener("keydown", (event) => {
+      if (event.key !== "ArrowUp" && event.key !== "ArrowDown") return;
+      event.preventDefault();
+      const delta = event.key === "ArrowUp" ? -1 : 1;
+      if (!list[index + delta] || !validInputs()) return;
       move(list, index, delta);
-      render();
-      $("#section-order-" + (index + delta) + (delta < 0 ? "-up" : "-down"))?.focus();
-    };
-    const up = button(tr("↑ لأعلى"), () => shift(-1), "quiet", index === 0);
-    const down = button(tr("↓ لأسفل"), () => shift(1), "quiet", index === list.length - 1);
-    up.id = "section-order-" + index + "-up";
-    down.id = "section-order-" + index + "-down";
-    actions.append(up, down);
-    top.append(label, actions);
+      refresh(section);
+    });
+    top.append(handle);
     row.append(top, navOptions(section, top));
     orderItems.append(row);
   });
-  editor.append(order);
+  return order;
+}
+
+function renderSettings() {
+  const header = element("div", "", "editor-head");
+  header.append(element("h2", tr("إعدادات الموقع")), saveButton());
+  editor.append(header, renderDefaultLanguage(), renderThemeSettings(), renderSectionOrder());
   const doc = session.doc;
   markupFields(editor, doc, [
     markup("title", tr("عنوان تبويب المتصفح")), markup('meta[name="description"]', tr("وصف الموقع في نتائج البحث"), "long", "content"),

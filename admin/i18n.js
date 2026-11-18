@@ -1,6 +1,10 @@
 "use strict";
 
 const englishLabels = {
+  "السيرة الذاتية بالإنجليزي · PDF": "English CV · PDF",
+  "السيرة الذاتية بالعربي · PDF": "Arabic CV · PDF",
+  "اسحب لترتيب القسم": "Drag to reorder section",
+  "اسحب القسم من عنوانه لتغيير مكانه، أو استخدم سهمي أعلى وأسفل من لوحة المفاتيح.": "Drag a section by its title to reorder it, or use the Up and Down arrow keys.",
   "لغة الموقع الافتراضية": "Default site language",
   "بتتطبق على الرابط الرئيسي، والزائر يقدر يبدّل اللغة من الموقع.": "Applies to the main URL. Visitors can switch languages on the site.",
   " · بالعربي": " · Arabic",
