@@ -3,11 +3,15 @@
 const SiteLanguage = (() => {
   const root = document.documentElement;
   const url = new URL(location.href);
+  const switcherEnabled = root.dataset.languageSwitcher !== "false";
+  const themePreview = url.searchParams.has("preview-theme");
   const preferenceKey = "mahmoud-portfolio-visitor-language";
   function savedLanguage() {
     try { return localStorage.getItem(preferenceKey); } catch { return null; }
   }
-  const language = [url.searchParams.get("lang"), savedLanguage(), root.dataset.siteLanguage].find((choice) => choice === "ar" || choice === "en") || "en";
+  const defaultLanguage = root.dataset.siteLanguage === "ar" ? "ar" : "en";
+  const requestedLanguage = switcherEnabled || themePreview ? url.searchParams.get("lang") : null;
+  const language = [requestedLanguage, switcherEnabled ? savedLanguage() : null, defaultLanguage].find((choice) => choice === "ar" || choice === "en");
   const labels = {
   "Private Palace - Makkah": "قصر خاص – مكة المكرمة",
   "General Food Security Authority": "الهيئة العامة للأمن الغذائي",
@@ -250,8 +254,8 @@ const SiteLanguage = (() => {
     flag.height = 15;
     return flag;
   }
-  for (const [parent, layout] of [[document.querySelector(".nav-social"), "wide"], [document.querySelector("#primary-nav"), "narrow"]]) {
-    if (!parent) continue;
+  function addLanguageSwitcher(parent, layout) {
+    if (!parent) return;
     const switcher = document.createElement("details");
     switcher.className = "site-language site-language-" + layout;
     const summary = document.createElement("summary");
@@ -270,7 +274,7 @@ const SiteLanguage = (() => {
       if (code === language) link.setAttribute("aria-current", "true");
       link.append(languageIcon(code), option.name);
       link.addEventListener("click", () => {
-        if (url.searchParams.has("preview-theme")) return;
+        if (themePreview) return;
         try { localStorage.setItem(preferenceKey, code); } catch {}
       });
       options.append(link);
@@ -286,6 +290,10 @@ const SiteLanguage = (() => {
       }
     });
     parent.append(switcher);
+  }
+  if (switcherEnabled) {
+    addLanguageSwitcher(document.querySelector(".nav-social"), "wide");
+    addLanguageSwitcher(document.querySelector("#primary-nav"), "narrow");
   }
 
   return { language, text, localize };

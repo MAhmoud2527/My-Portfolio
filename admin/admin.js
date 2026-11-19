@@ -665,7 +665,18 @@ function renderDefaultLanguage() {
       preview.href = url.href;
     }
   }));
-  container.append(element("p", tr("بتتطبق على الرابط الرئيسي، والزائر يقدر يبدّل اللغة من الموقع."), "hint"));
+  const switcher = element("input");
+  switcher.type = "checkbox";
+  switcher.setAttribute("role", "switch");
+  switcher.checked = root.dataset.languageSwitcher !== "false";
+  switcher.addEventListener("change", () => {
+    if (switcher.checked) delete root.dataset.languageSwitcher;
+    else root.dataset.languageSwitcher = "false";
+    updatePending();
+  });
+  const label = element("label", "", "visibility-toggle");
+  label.append(switcher, element("span", "", "switch-track"), element("span", tr("إظهار اختيار اللغة للزوار")));
+  container.append(label, element("p", tr("عند إيقاف الاختيار، الموقع بيظهر للزوار باللغة الافتراضية فقط."), "hint"));
   return container;
 }
 
